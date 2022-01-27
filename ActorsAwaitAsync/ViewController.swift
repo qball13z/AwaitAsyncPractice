@@ -53,8 +53,10 @@ class ViewController: UIViewController {
     
     private func loadUsers() {
         Task {
+            showSpinner(onView: self.view)
             let users = await dataFetchable.loadUsers(userCount: 1000)
             updateCollectionView(users)
+            removeSpinner()
         }
     }
     
