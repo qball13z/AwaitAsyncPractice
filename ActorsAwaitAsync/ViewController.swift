@@ -1,8 +1,22 @@
 import UIKit
 
+public protocol DataFetchable {
+    func loadUsers(userCount: Int) async -> [User]
+}
+
 class ViewController: UIViewController {
     var collectionView: UICollectionView?
     var collectionViewItems = [User]()
+    let dataFetchable: DataFetchable
+    
+    init(dataFetchable: DataFetchable) {
+        self.dataFetchable = dataFetchable
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,7 +32,7 @@ class ViewController: UIViewController {
     
     private func configureView() {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         
         let size = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(60))
         let item  = NSCollectionLayoutItem(layoutSize: size)
@@ -39,12 +53,8 @@ class ViewController: UIViewController {
     
     private func loadUsers() {
         Task {
-            do {
-                let users = try await DataManager.fetchUsers(resultCount: 1000)
-                updateCollectionView(users)
-            } catch {
-                print("Failed with error: \(error)")
-            }
+            let users = await dataFetchable.loadUsers(userCount: 1000)
+            updateCollectionView(users)
         }
     }
     

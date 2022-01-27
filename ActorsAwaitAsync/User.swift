@@ -2,7 +2,7 @@ struct UserResult: Codable {
     let results: [User]
 }
 
-struct User: Codable {
+public struct User: Codable {
     let gender: String
     let name: NameInfo
     let location: Location

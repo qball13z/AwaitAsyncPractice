@@ -16,7 +16,7 @@
 		5D5A5651279F03D4008A3BDA /* ActorsAwaitAsyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5650279F03D4008A3BDA /* ActorsAwaitAsyncUITests.swift */; };
 		5D5A5653279F03D4008A3BDA /* ActorsAwaitAsyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5652279F03D4008A3BDA /* ActorsAwaitAsyncUITestsLaunchTests.swift */; };
 		5D5A5660279F0911008A3BDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A565F279F0911008A3BDA /* User.swift */; };
-		5D5A5662279F1319008A3BDA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5661279F1319008A3BDA /* DataManager.swift */; };
+		5D5A5662279F1319008A3BDA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5661279F1319008A3BDA /* APIManager.swift */; };
 		5D5A5664279F3481008A3BDA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5663279F3481008A3BDA /* CustomCell.swift */; };
 		5D5A5666279F44AA008A3BDA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5665279F44AA008A3BDA /* ImageLoader.swift */; };
 /* End PBXBuildFile section */
@@ -52,7 +52,7 @@
 		5D5A5650279F03D4008A3BDA /* ActorsAwaitAsyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorsAwaitAsyncUITests.swift; sourceTree = "<group>"; };
 		5D5A5652279F03D4008A3BDA /* ActorsAwaitAsyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorsAwaitAsyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5D5A565F279F0911008A3BDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		5D5A5661279F1319008A3BDA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		5D5A5661279F1319008A3BDA /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		5D5A5663279F3481008A3BDA /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		5D5A5665279F44AA008A3BDA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,7 +112,7 @@
 				5D5A563A279F03D3008A3BDA /* LaunchScreen.storyboard */,
 				5D5A563D279F03D3008A3BDA /* Info.plist */,
 				5D5A565F279F0911008A3BDA /* User.swift */,
-				5D5A5661279F1319008A3BDA /* DataManager.swift */,
+				5D5A5661279F1319008A3BDA /* APIManager.swift */,
 				5D5A5663279F3481008A3BDA /* CustomCell.swift */,
 				5D5A5665279F44AA008A3BDA /* ImageLoader.swift */,
 			);
@@ -270,7 +270,7 @@
 				5D5A5660279F0911008A3BDA /* User.swift in Sources */,
 				5D5A5634279F03D2008A3BDA /* ViewController.swift in Sources */,
 				5D5A5630279F03D2008A3BDA /* AppDelegate.swift in Sources */,
-				5D5A5662279F1319008A3BDA /* DataManager.swift in Sources */,
+				5D5A5662279F1319008A3BDA /* APIManager.swift in Sources */,
 				5D5A5664279F3481008A3BDA /* CustomCell.swift in Sources */,
 				5D5A5632279F03D2008A3BDA /* SceneDelegate.swift in Sources */,
 			);

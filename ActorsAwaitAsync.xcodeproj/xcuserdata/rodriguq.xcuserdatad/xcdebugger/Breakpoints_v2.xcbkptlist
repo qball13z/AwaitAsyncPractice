@@ -36,5 +36,85 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5524C036-48D3-45A5-8DD8-E17D329044C1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActorsAwaitAsync/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "loadUsers(userCount:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5524C036-48D3-45A5-8DD8-E17D329044C1 - 244cf2cc17517fa1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActorsAwaitAsync.APIManager.loadUsers(userCount: Swift.Int) async -&gt; Swift.Array&lt;ActorsAwaitAsync.User&gt;"
+                  moduleName = "ActorsAwaitAsync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsync/APIManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "366">
+               </Location>
+               <Location
+                  uuid = "5524C036-48D3-45A5-8DD8-E17D329044C1 - 2aee80d230c1a2e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) await resume partial function for ActorsAwaitAsync.APIManager.loadUsers(userCount: Swift.Int) async -&gt; Swift.Array&lt;ActorsAwaitAsync.User&gt;"
+                  moduleName = "ActorsAwaitAsync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsync/APIManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
+                  offsetFromSymbolStart = "93">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2D446490-C49F-45E7-B395-B9B51BAEA676"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActorsAwaitAsync/APIManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "loadUsers(userCount:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6F3A9443-FAB6-4E8A-A3C8-E7AFC3EA9B68"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActorsAwaitAsync/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "loadUsers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
