@@ -16,6 +16,7 @@ public class APIManager: DataFetchable {
         return userResult.results
     }
     
+    // Throw in future : TODO
     public func loadUsers(userCount: Int) async -> [User] {
         let loadTask = Task { () -> [User] in
             do {

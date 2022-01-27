@@ -2,6 +2,16 @@ import Foundation
 import UIKit
 
 actor ImageLoader {
+    private enum LoaderStatus {
+        case inProgress(Task<UIImage, Error>)
+        case fetched(UIImage)
+    }
+
+    private enum ImageLoaderError: Error {
+        case noImageFound
+        case cannotCreateImage
+    }
+    
     private var images: [URLRequest: LoaderStatus] = [:]
     
     public func fetch(_ url: URL) async throws -> UIImage {
@@ -72,15 +82,5 @@ actor ImageLoader {
               }
         
         return applicationSupport.appendingPathComponent(fileName.replacingOccurrences(of: "/", with: "-"))
-    }
-    
-    private enum LoaderStatus {
-        case inProgress(Task<UIImage, Error>)
-        case fetched(UIImage)
-    }
-    
-    private enum ImageLoaderError: Error {
-        case noImageFound
-        case cannotCreateImage
     }
 }
