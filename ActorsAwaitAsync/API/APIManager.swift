@@ -1,32 +1,37 @@
 import Foundation
 
+protocol URLSessionProtocol {
+    func data(from url: URL, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse)
+}
+
 public class APIManager: DataFetchable {
     enum UserFetchError: Error {
         case invalidURL
         case missingData
     }
     
+    var session: URLSessionProtocol
+    let apiURL: String
+    
+    init(session: URLSessionProtocol = URLSession.shared, apiURL: String = "https://randomuser.me/api/?results=") {
+        self.session = session
+        self.apiURL = apiURL
+    }
+    
     public func fetchUsers(resultCount: Int) async throws -> [User] {
-        guard let url = URL(string: "https://randomuser.me/api/?results=\(String(resultCount))") else {
+        guard let url = URL(string: "\(self.apiURL)\(String(resultCount))") else {
             throw UserFetchError.invalidURL
         }
         
-        let (data, _) = try await URLSession.shared.data(from: url)
+        let (data, _) = try await session.data(from: url, delegate: nil)
         let userResult = try JSONDecoder().decode(UserResult.self, from: data)
         return userResult.results
     }
     
-    // Throw in future : TODO
-    public func loadUsers(userCount: Int) async -> [User] {
-        let loadTask = Task { () -> [User] in
-            do {
-                let users = try await fetchUsers(resultCount: userCount)
-                return users
-            } catch {
-                print("Failed with error: \(error)")
-                return []
-            }
-        }
-        return await loadTask.value
+    public func loadUsers(numberOfUsersToFetch: Int) async throws -> [User] {
+        let users = try await fetchUsers(resultCount: numberOfUsersToFetch)
+        return users
     }
 }
+
+extension URLSession: URLSessionProtocol {}

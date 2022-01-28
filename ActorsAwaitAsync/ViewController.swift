@@ -1,7 +1,7 @@
 import UIKit
 
 public protocol DataFetchable {
-    func loadUsers(userCount: Int) async -> [User]
+    func loadUsers(numberOfUsersToFetch: Int) async throws -> [User]
 }
 
 class ViewController: UIViewController {
@@ -54,8 +54,13 @@ class ViewController: UIViewController {
     private func loadUsers() {
         Task {
             showSpinner(onView: self.view)
-            let users = await dataFetchable.loadUsers(userCount: 1000)
-            updateCollectionView(users)
+            do {
+                let users = try await dataFetchable.loadUsers(numberOfUsersToFetch: 1000)
+                updateCollectionView(users)
+            } catch {
+                // log error
+                updateCollectionView([])
+            }
             removeSpinner()
         }
     }
