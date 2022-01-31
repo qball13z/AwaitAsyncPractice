@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import OSLog
 
 actor ImageLoader {
     private enum LoaderStatus {
@@ -13,6 +14,7 @@ actor ImageLoader {
     }
     
     private var images: [URLRequest: LoaderStatus] = [:]
+    private let logger = Logger(subsystem: "com.wwt.actorsawaitasync.imageloader", category: "ImageLoader")
     
     public func fetch(_ url: URL) async throws -> UIImage {
         let request = URLRequest(url: url)
@@ -23,18 +25,22 @@ actor ImageLoader {
         if let status = images[urlRequest] {
             switch status {
             case .fetched(let image):
+                logger.debug("Fetched image \(image) with URLRequest \(urlRequest)")
                 return image
             case .inProgress(let task):
+                logger.debug("In Progress task with URLRequest \(urlRequest)")
                 return try await task.value
             }
         }
         
         do {
             let image = try self.imageFromFileSystem(for: urlRequest)
+            logger.debug("Found image for urlRequest \(urlRequest) in the cache.")
             images[urlRequest] = .fetched(image)
             return image
         } catch {
             let task: Task<UIImage, Error> = Task {
+                logger.debug("Starting Download with URLRequest: \(urlRequest)")
                 let (imageData, _) = try await URLSession.shared.data(for: urlRequest)
                 let image = UIImage(data: imageData)!
                 try self.persistImage(image, for: urlRequest)
@@ -43,6 +49,7 @@ actor ImageLoader {
             
             images[urlRequest] = .inProgress(task)
             let image = try await task.value
+            logger.debug("Completed with URLRequest: \(urlRequest)")
             images[urlRequest] = .fetched(image)
             return image
         }
