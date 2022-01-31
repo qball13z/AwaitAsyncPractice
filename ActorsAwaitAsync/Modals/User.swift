@@ -2,7 +2,7 @@ struct UserResult: Codable {
     let results: [User]
 }
 
-public struct User: Codable {
+public struct User: Codable, Equatable {
     let gender: String
     let name: NameInfo
     let location: Location
@@ -10,13 +10,13 @@ public struct User: Codable {
     let picture: PictureInfo
 }
 
-struct NameInfo: Codable {
+struct NameInfo: Codable, Equatable {
     let title: String
     let first: String
     let last: String
 }
 
-struct Location: Codable {
+struct Location: Codable, Equatable {
     let street: Street
     let city: String
     let state: String
@@ -25,22 +25,22 @@ struct Location: Codable {
     let timezone: Timezone
 }
 
-struct Street: Codable {
+struct Street: Codable, Equatable {
     let number: Int
     let name: String
 }
 
-struct Coordinates: Codable {
+struct Coordinates: Codable,Equatable {
     let latitude: String
     let longitude: String
 }
 
-struct Timezone: Codable {
+struct Timezone: Codable, Equatable {
     let offset: String
     let description: String
 }
 
-struct PictureInfo: Codable {
+struct PictureInfo: Codable, Equatable {
     let large: String
     let medium: String
     let thumbnail: String

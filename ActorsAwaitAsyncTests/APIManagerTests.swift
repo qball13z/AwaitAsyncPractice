@@ -2,9 +2,13 @@ import XCTest
 import ActorsAwaitAsync
 @testable import ActorsAwaitAsync
 
+// Inspired from: https://www.anotheriosdevblog.com/xctest-testing-asynchronous-network-functionality/
+
 class APIManagerTests: XCTestCase {
     var mockURLSession: MockURLSession!
     var apiManager: APIManager!
+    let goodApiURL = "https://randomuser.me/api/?results="
+    let badApiURL = "˚_-[]{}!@#$%^&*()•ª¶§∞¢£™¡"
     
     // MARK: LoadUsers()
     func test_loadUsers_givensuccess_returnUserCount() async throws {
@@ -19,21 +23,83 @@ class APIManagerTests: XCTestCase {
     // MARK: FetchUsers()
     func test_fetchUsers_givenInvalidURL_throwInvalidURLError() async throws {
         mockURLSession = MockURLSession(data: jsonData(), urlResponse: response(statusCode: 200))
-        apiManager = APIManager(session: mockURLSession, apiURL: "˚_-[]{}!@#$%^&*()•ª¶§∞¢£™¡")
+        apiManager = APIManager(session: mockURLSession, apiURL: badApiURL)
         let userCount = 1
         
         do {
-            let users = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
+            _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
             XCTFail("This should throw.")
         } catch {
             XCTAssertEqual(APIManager.UserFetchError.invalidURL, error as! APIManager.UserFetchError)
         }
     }
     
-    // Test Failing Status Codes
-    // Test return session throws
-    // Test Returning no users
-    // Test failed decoding - GIVE IT GARBAGE DATA
+    func test_fetchUsers_given_badJsonData_throwUnableToDecodeError() async throws {
+        mockURLSession = MockURLSession(data: badJsonData(), urlResponse: response(statusCode: 200))
+        apiManager = APIManager(session: mockURLSession, apiURL: goodApiURL)
+        let userCount = 1
+        
+        do {
+            _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
+            XCTFail("This should throw.")
+        } catch {
+            XCTAssertEqual(APIManager.UserFetchError.unableToDecodeError, error as! APIManager.UserFetchError)
+        }
+    }
+    
+    func test_fetchUsers_given_noUsers_returnsEmptyArray() async throws {
+        mockURLSession = MockURLSession(data: jsonData(), urlResponse: response(statusCode: 200))
+        apiManager = APIManager(session: mockURLSession, apiURL: goodApiURL)
+        let userCount = 0
+        
+        do {
+            let users = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
+            XCTAssertEqual(users, [])
+        } catch {
+            XCTFail("Should not throw.")
+        }
+    }
+    
+    func test_fetchUsers_given_badUrlResponse_throws400Error() async throws {
+        mockURLSession = MockURLSession(data: jsonData(), urlResponse: response(statusCode: 400))
+        apiManager = APIManager(session: mockURLSession, apiURL: goodApiURL)
+        let userCount = 1
+        
+        do {
+            _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
+            XCTFail("This should throw.")
+        } catch {
+            XCTAssertEqual(APIManager.UserFetchError.failedRequestError, error as! APIManager.UserFetchError)
+        }
+    }
+    
+    func test_fetchUsers_given_badUrlResponse_throws500Error() async throws {
+        mockURLSession = MockURLSession(data: jsonData(), urlResponse: response(statusCode: 500))
+        apiManager = APIManager(session: mockURLSession, apiURL: goodApiURL)
+        let userCount = 1
+        
+        do {
+            _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
+            XCTFail("This should throw.")
+        } catch {
+            XCTAssertEqual(APIManager.UserFetchError.serverRequestError, error as! APIManager.UserFetchError)
+        }
+    }
+    
+    func test_fetchUsers_given_badUrlResponse_throws600Error() async throws {
+        mockURLSession = MockURLSession(data: jsonData(), urlResponse: response(statusCode: 600))
+        apiManager = APIManager(session: mockURLSession, apiURL: goodApiURL)
+        let userCount = 1
+        
+        do {
+            _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
+            XCTFail("This should throw.")
+        } catch {
+            XCTAssertEqual(APIManager.UserFetchError.genericRequestError, error as! APIManager.UserFetchError)
+        }
+    }
+    
+    // Test return session throws ???? Think i covered this???
 }
 
 class MockURLSession: URLSessionProtocol {

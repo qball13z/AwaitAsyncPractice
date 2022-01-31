@@ -7,7 +7,10 @@ protocol URLSessionProtocol {
 public class APIManager: DataFetchable {
     enum UserFetchError: Error {
         case invalidURL
-        case missingData
+        case serverRequestError
+        case unableToDecodeError
+        case failedRequestError
+        case genericRequestError
     }
     
     var session: URLSessionProtocol
@@ -19,12 +22,30 @@ public class APIManager: DataFetchable {
     }
     
     public func fetchUsers(resultCount: Int) async throws -> [User] {
+        if resultCount < 1 {
+            return []
+        }
+        
         guard let url = URL(string: "\(self.apiURL)\(String(resultCount))") else {
             throw UserFetchError.invalidURL
         }
         
-        let (data, _) = try await session.data(from: url, delegate: nil)
-        let userResult = try JSONDecoder().decode(UserResult.self, from: data)
+        let (data, response) = try await session.data(from: url, delegate: nil)
+        
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode >= 400 {
+            switch httpResponse.statusCode {
+            case 400...499:
+                throw UserFetchError.failedRequestError
+            case 500...599:
+                throw UserFetchError.serverRequestError
+            default:
+                throw UserFetchError.genericRequestError
+            }
+        }
+        
+        guard let userResult = try? JSONDecoder().decode(UserResult.self, from: data) else {
+            throw UserFetchError.unableToDecodeError
+        }
         return userResult.results
     }
     
