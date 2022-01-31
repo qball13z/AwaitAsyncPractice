@@ -99,12 +99,25 @@ class APIManagerTests: XCTestCase {
         }
     }
     
-    // Test return session throws ???? Think i covered this???
+    func test_fetcherUsers_given_badSession_throwError() async throws {
+        mockURLSession = MockURLSession(data: jsonData(), urlResponse: response(statusCode: 200))
+        mockURLSession.error = NSError(domain: "bad", code: 999, userInfo: nil)
+        apiManager = APIManager(session: mockURLSession, apiURL: goodApiURL)
+        let userCount = 1
+        
+        do {
+            _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
+            XCTFail("This should throw.")
+        } catch {
+            XCTAssertEqual(error.localizedDescription, "The operation couldn’t be completed. (bad error 999.)")
+        }
+    }
 }
 
 class MockURLSession: URLSessionProtocol {
     var data: Data
     var urlResponse: URLResponse
+    var error: Error?
     
     init(data: Data?, urlResponse: URLResponse?) {
         self.data = data!
@@ -112,6 +125,10 @@ class MockURLSession: URLSessionProtocol {
     }
     
     func data(from url: URL, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse) {
+        if let error = error {
+            throw error
+        }
+        
         // Do we need an await in here for this async method to be valid???
         // No, because it's always called from an async context
         return (self.data, self.urlResponse)

@@ -1,4 +1,5 @@
 import UIKit
+import OSLog
 
 public protocol DataFetchable {
     func loadUsers(numberOfUsersToFetch: Int) async throws -> [User]
@@ -7,7 +8,8 @@ public protocol DataFetchable {
 class ViewController: UIViewController {
     var collectionView: UICollectionView?
     var collectionViewItems = [User]()
-    let dataFetchable: DataFetchable
+    private let dataFetchable: DataFetchable
+    private let logger = Logger(subsystem: "com.wwt.actorsawaitasync.viewcontroller", category: "ViewController")
     
     init(dataFetchable: DataFetchable) {
         self.dataFetchable = dataFetchable
@@ -59,6 +61,7 @@ class ViewController: UIViewController {
                 updateCollectionView(users)
             } catch {
                 // log error
+                logger.debug("Error loading users. \(error.localizedDescription)")
                 updateCollectionView([])
             }
             removeSpinner()
