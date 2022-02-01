@@ -77,7 +77,13 @@ actor ImageLoader {
             throw ImageLoaderError.noImageFound
         }
         
-        let data = try Data(contentsOf: url)
+        guard let data = FileManager.default.contents(atPath: url.path) else {
+            throw ImageLoaderError.noImageFound
+        }
+        
+        // TODO: Mock the FileManager and check that we call the url path only once.
+        
+        //Data(contentsOf: url) - OLD?
         guard let image = UIImage(data: data) else {
             throw ImageLoaderError.cannotCreateImage
         }

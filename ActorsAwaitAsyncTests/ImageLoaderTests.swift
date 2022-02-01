@@ -85,33 +85,33 @@ class ImageLoaderTests: XCTestCase {
         sleep(10)
     }
     
-    //    func test_fetch_givenMultipleDetachedTasks_returnInProgress() async throws {
-    //        do {
-    //            let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory,includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-    //            for fileURL in fileURLs {
-    //                try FileManager.default.removeItem(at: fileURL)
-    //            }
-    //        } catch { print(error)}
-    //
-    //        Task.detached {
-    //            for _ in 0...2 {
-    //                _ = try await self.imageLoader.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
-    //            }
-    //        }
-    //
-    //        Task.detached {
-    //            for _ in 0...2 {
-    //                _ = try await self.imageLoader.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
-    //            }
-    //        }
-    //
-    //        Task.detached {
-    //            for _ in 0...2 {
-    //                _ = try await self.imageLoader.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
-    //            }
-    //        }
-    //
-    //        sleep(3)
-    //    }
+        func test_fetch_givenMultipleDetachedTasks_returnInProgress() async throws {
+            do {
+                let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory,includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+                for fileURL in fileURLs {
+                    try FileManager.default.removeItem(at: fileURL)
+                }
+            } catch { print(error)}
+    
+            Task.detached {
+                for _ in 0...2 {
+                    _ = try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
+                }
+            }
+    
+            Task.detached {
+                for _ in 0...2 {
+                    _ = try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
+                }
+            }
+    
+            Task.detached {
+                for _ in 0...2 {
+                    _ = try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
+                }
+            }
+    
+            sleep(3)
+        }
 }
 
