@@ -7,21 +7,44 @@ actor ImageLoader {
         case inProgress(Task<UIImage, Error>)
         case fetched(UIImage)
     }
-
+    
     private enum ImageLoaderError: Error {
         case noImageFound
         case cannotCreateImage
+        case imageNotDownloaded
     }
     
     private var images: [URLRequest: LoaderStatus] = [:]
     private let logger = Logger(subsystem: "com.wwt.actorsawaitasync.imageloader", category: "ImageLoader")
+    private let launcher: TaskLaunchable
     
-    public func fetch(_ url: URL) async throws -> UIImage {
-        let request = URLRequest(url: url)
-        return try await fetch(request)
+    public init(launcher: TaskLaunchable = TaskLauncher()) {
+        self.launcher = launcher
     }
     
     public func fetch(_ urlRequest: URLRequest) async throws -> UIImage {
+        do {
+            return try await getImageFromURLRequest(urlRequest)
+        } catch {
+            logger.error("Error: \(error.localizedDescription)")
+        }
+        
+        let task: Task<UIImage, Error> = launcher.imageTask(priority: nil) {
+            self.logger.debug("Starting Download with URLRequest: \(urlRequest)")
+            let (imageData, _) = try await URLSession.shared.data(for: urlRequest)
+            let image = UIImage(data: imageData)!
+            try await self.persistImage(image, for: urlRequest)
+            return image
+        }
+        
+        images[urlRequest] = .inProgress(task)
+        let image = try await task.value
+        logger.debug("Completed with URLRequest: \(urlRequest)")
+        images[urlRequest] = .fetched(image)
+        return image
+    }
+    
+    private func getImageFromURLRequest(_ urlRequest: URLRequest) async throws -> UIImage {
         if let status = images[urlRequest] {
             switch status {
             case .fetched(let image):
@@ -32,27 +55,7 @@ actor ImageLoader {
                 return try await task.value
             }
         }
-        
-        do {
-            let image = try self.imageFromFileSystem(for: urlRequest)
-            logger.debug("Found image for urlRequest \(urlRequest) in the cache.")
-            images[urlRequest] = .fetched(image)
-            return image
-        } catch {
-            let task: Task<UIImage, Error> = Task {
-                logger.debug("Starting Download with URLRequest: \(urlRequest)")
-                let (imageData, _) = try await URLSession.shared.data(for: urlRequest)
-                let image = UIImage(data: imageData)!
-                try self.persistImage(image, for: urlRequest)
-                return image
-            }
-            
-            images[urlRequest] = .inProgress(task)
-            let image = try await task.value
-            logger.debug("Completed with URLRequest: \(urlRequest)")
-            images[urlRequest] = .fetched(image)
-            return image
-        }
+        return try loadImageFromFileSystem(for: urlRequest)
     }
     
     private func persistImage(_ image: UIImage, for urlRequest: URLRequest) throws {
@@ -68,7 +71,7 @@ actor ImageLoader {
         }
     }
     
-    private func imageFromFileSystem(for urlRequest: URLRequest) throws -> UIImage {
+    private func loadImageFromFileSystem(for urlRequest: URLRequest) throws -> UIImage {
         guard let url = fileName(for: urlRequest) else {
             assertionFailure("Unable to generate a local path for \(urlRequest)")
             throw ImageLoaderError.noImageFound
@@ -79,6 +82,8 @@ actor ImageLoader {
             throw ImageLoaderError.cannotCreateImage
         }
         
+        logger.debug("Found image for urlRequest \(urlRequest) in the cache.")
+        images[urlRequest] = .fetched(image)
         return image
     }
     
