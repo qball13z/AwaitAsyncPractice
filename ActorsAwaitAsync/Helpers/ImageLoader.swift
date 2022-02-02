@@ -2,25 +2,35 @@ import Foundation
 import UIKit
 import OSLog
 
+protocol FileManagerProtocol {
+    func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL]
+    func contents(atPath: String) -> Data?
+}
+
 actor ImageLoader {
-    private enum LoaderStatus {
+    public enum LoaderStatus {
         case inProgress(Task<UIImage, Error>)
         case fetched(UIImage)
     }
     
-    private enum ImageLoaderError: Error {
+    enum ImageLoaderError: Error {
         case noImageFound
         case cannotCreateImage
         case imageNotDownloaded
+        case cannotGetImage
+        case cannotSaveImage
     }
     
-    private var images: [URLRequest: LoaderStatus] = [:]
+    private let fileManager: FileManagerProtocol
+    public var images: [URLRequest: LoaderStatus] = [:]
     private let logger = Logger(subsystem: "com.wwt.actorsawaitasync.imageloader", category: "ImageLoader")
     private let launcher: TaskLaunchable
     
-    public init(launcher: TaskLaunchable = TaskLauncher()) {
+    public init(launcher: TaskLaunchable = TaskLauncher(), fileManager: FileManagerProtocol = FileManager.default) {
         self.launcher = launcher
+        self.fileManager = fileManager
     }
+    
     
     public func fetch(_ urlRequest: URLRequest) async throws -> UIImage {
         do {
@@ -77,13 +87,10 @@ actor ImageLoader {
             throw ImageLoaderError.noImageFound
         }
         
-        guard let data = FileManager.default.contents(atPath: url.path) else {
-            throw ImageLoaderError.noImageFound
+        guard let data = fileManager.contents(atPath: url.path) else {
+            throw ImageLoaderError.cannotSaveImage
         }
         
-        // TODO: Mock the FileManager and check that we call the url path only once.
-        
-        //Data(contentsOf: url) - OLD?
         guard let image = UIImage(data: data) else {
             throw ImageLoaderError.cannotCreateImage
         }
@@ -95,10 +102,12 @@ actor ImageLoader {
     
     private func fileName(for urlRequest: URLRequest) -> URL? {
         guard let fileName = urlRequest.url?.relativePath.dropFirst().addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let applicationSupport = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+              let applicationSupport = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
                   return nil
               }
         
         return applicationSupport.appendingPathComponent(fileName.replacingOccurrences(of: "/", with: "-"))
     }
 }
+
+extension FileManager: FileManagerProtocol {}

@@ -7,65 +7,128 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2C8EFE89-AD43-4229-938D-256B86241EA9"
+            uuid = "C75F7716-8B71-4A07-BC39-D96312037BE9"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActorsAwaitAsyncTests/ImageLoaderTests.swift"
+            filePath = "ActorsAwaitAsync/Helpers/ImageLoader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "ImageLoaderTests"
-            landmarkType = "3">
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "loadImageFromFileSystem(for:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "450BCE01-EC9B-464E-AADC-D2D54E2857A1"
+            uuid = "51F47E9D-5BBE-4122-9E29-664626EFF4CB"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActorsAwaitAsyncTests/ImageLoaderTests.swift"
+            filePath = "ActorsAwaitAsync/Helpers/ImageLoader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
-            landmarkName = "ImageLoaderTests"
-            landmarkType = "3">
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "getImageFromURLRequest(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A04B6378-F68A-471C-9CDD-B9CF271672BA"
+            uuid = "F9C9DEAA-A01E-4AE2-A815-F90037D05CD1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActorsAwaitAsyncTests/ImageLoaderTests.swift"
+            filePath = "ActorsAwaitAsync/Helpers/ImageLoader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
-            landmarkName = "ImageLoaderTests"
-            landmarkType = "3">
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "fetch(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F9C9DEAA-A01E-4AE2-A815-F90037D05CD1 - f899b92eaf569b57"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActorsAwaitAsync.ImageLoader.fetch(Foundation.URLRequest) async throws -&gt; __C.UIImage"
+                  moduleName = "ActorsAwaitAsync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsync/Helpers/ImageLoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "368">
+               </Location>
+               <Location
+                  uuid = "F9C9DEAA-A01E-4AE2-A815-F90037D05CD1 - d908566fc6407481"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) await resume partial function for ActorsAwaitAsync.ImageLoader.fetch(Foundation.URLRequest) async throws -&gt; __C.UIImage"
+                  moduleName = "ActorsAwaitAsync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsync/Helpers/ImageLoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "87">
+               </Location>
+               <Location
+                  uuid = "F9C9DEAA-A01E-4AE2-A815-F90037D05CD1 - fb86bf37b5c52aab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(2) suspend resume partial function for ActorsAwaitAsync.ImageLoader.fetch(Foundation.URLRequest) async throws -&gt; __C.UIImage"
+                  moduleName = "ActorsAwaitAsync"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsync/Helpers/ImageLoader.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "262">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1CDEBA5E-9CDD-4D34-9EE0-FEF873099037"
-            shouldBeEnabled = "No"
+            uuid = "7B6D49B3-1AEB-47AF-9A1A-9E7A9A7B10A9"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ActorsAwaitAsyncTests/ImageLoaderTests.swift"
+            filePath = "ActorsAwaitAsync/Helpers/ImageLoader.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "91"
             endingLineNumber = "91"
-            landmarkName = "ImageLoaderTests"
-            landmarkType = "3">
+            landmarkName = "loadImageFromFileSystem(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E767BA88-B0DD-42FC-BB86-E67A8075EA39"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActorsAwaitAsync/Helpers/ImageLoader.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "fetch(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

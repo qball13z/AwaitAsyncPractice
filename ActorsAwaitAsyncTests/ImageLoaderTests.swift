@@ -25,15 +25,17 @@ class MockTaskLauncher: TaskLaunchable {
 
 class ImageLoaderTests: XCTestCase {
     let mockTaskLauncher = MockTaskLauncher()
+    let mockFileManager = MockFileManager()
     var testObject = ImageLoader()
     let imageOne = Bundle.init(for: ImageLoaderTests.self).url(forResource: "picture1", withExtension: "jpg")
     let imageTwo = Bundle.init(for: ImageLoaderTests.self).url(forResource: "picture2", withExtension: "jpg")
+    let badURLOne = URL(string: "BadURL1//")
     let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     
     override func setUp() async throws {
         try await super.setUp()
         
-        testObject = ImageLoader(launcher: mockTaskLauncher)
+        testObject = ImageLoader(launcher: mockTaskLauncher, fileManager: mockFileManager)
         
     }
     
@@ -42,7 +44,7 @@ class ImageLoaderTests: XCTestCase {
         
         do {
             _ = try await testObject.fetch(URLRequest(url: url!))
-            XCTFail()
+            XCTFail("Should throw error.")
         } catch {
             XCTAssertEqual(error.localizedDescription, "The requested URL was not found on this server.")
         }
@@ -58,60 +60,85 @@ class ImageLoaderTests: XCTestCase {
         
         do {
             _ = try await testObject.fetch(URLRequest(url: url!))
-            XCTFail()
+            XCTFail("Should throw error.")
         } catch {
             XCTAssertEqual(error.localizedDescription, "unsupported URL")
         }
     }
     
-    func test_fetch_givenFetchTask_returnInProgress() async throws {
-        do {
-            let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory,includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-            for fileURL in fileURLs {
-                try FileManager.default.removeItem(at: fileURL)
-            }
-        } catch { print(error)}
+    // MARK: loadImageFromFileSystem()
+    func test_loadImageFromFileSystem_givenBadPathToSave_shouldReturnNilData() async throws {
+        let badPath = "BadPath"
         
-        mockTaskLauncher.shouldSuspendFirstTask = true
-        
-        Task.detached() {
-        try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
-        }
-        
-        Task.detached() {
-        try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
-        }
-        
-        sleep(10)
+        XCTAssertNil(mockFileManager.contents(atPath: badPath))
     }
     
-        func test_fetch_givenMultipleDetachedTasks_returnInProgress() async throws {
-            do {
-                let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory,includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
-                for fileURL in fileURLs {
-                    try FileManager.default.removeItem(at: fileURL)
-                }
-            } catch { print(error)}
+    func test_loadImageFromFileSystem_givenGoodPathToSave_shouldReturnData() async throws {
+        let goodPath = "GoodPath"
+        
+        XCTAssertNotNil(mockFileManager.contents(atPath: goodPath))
+    }
     
-            Task.detached {
-                for _ in 0...2 {
-                    _ = try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
-                }
-            }
     
-            Task.detached {
-                for _ in 0...2 {
-                    _ = try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
-                }
-            }
     
-            Task.detached {
-                for _ in 0...2 {
-                    _ = try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
-                }
-            }
     
-            sleep(3)
-        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //    func test_fetch_givenFetchTask_returnInProgress() async throws {
+    //        do {
+    //            let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory,includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+    //            for fileURL in fileURLs {
+    //                try FileManager.default.removeItem(at: fileURL)
+    //            }
+    //        } catch { print(error)}
+    //
+    //        mockTaskLauncher.shouldSuspendFirstTask = true
+    //
+    //        Task.detached() {
+    //        try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
+    //        }
+    //
+    //        Task.detached() {
+    //        try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
+    //        }
+    //
+    //        sleep(10)
+    //    }
+    //
+    //        func test_fetch_givenMultipleDetachedTasks_returnInProgress() async throws {
+    //            do {
+    //                let fileURLs = try FileManager.default.contentsOfDirectory(at: documentsDirectory,includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+    //                for fileURL in fileURLs {
+    //                    try FileManager.default.removeItem(at: fileURL)
+    //                }
+    //            } catch { print(error)}
+    //
+    //            Task.detached {
+    //                for _ in 0...2 {
+    //                    _ = try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
+    //                }
+    //            }
+    //
+    //            Task.detached {
+    //                for _ in 0...2 {
+    //                    _ = try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
+    //                }
+    //            }
+    //
+    //            Task.detached {
+    //                for _ in 0...2 {
+    //                    _ = try await self.testObject.fetch(URLRequest(url: URL(string: "https://images.pexels.com/photos/2014422/pexels-photo-2014422.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")!))
+    //                }
+    //            }
+    //
+    //            sleep(3)
+    //        }
 }
-
