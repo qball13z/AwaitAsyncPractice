@@ -38,7 +38,7 @@ class DiskCache: DiskCacheProtocol {
         guard let data = image.jpegData(compressionQuality: 0.8) else {
             throw DiskCacheError.couldNotCreateData
         }
-        try data.write(to: url, options: .atomic)
+        try storeFileAt(url: url, data: data)
     }
     
     func retrieveCachedImage(urlRequest: URLRequest) throws -> UIImage {
@@ -60,10 +60,11 @@ class DiskCache: DiskCacheProtocol {
         }
         
         guard let fileName = urlRequest.url?.relativePath.dropFirst().addingPercentEncoding(withAllowedCharacters: .urlPathAllowed),
-              let applicationSupport = documentsDirectory else {
+              let applicationSupport = documentsDirectory,
+                !fileName.isEmpty else {
                   throw DiskCacheError.invalidFileURL
               }
-        
+        // Test this line
         return applicationSupport.appendingPathComponent(fileName.replacingOccurrences(of: "/", with: "-"))
     }
     

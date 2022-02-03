@@ -7,7 +7,9 @@ class MockFileManager: FileManagerProtocol {
     var contentsToReturn: Data? = Data()
     var capturedUrlDirectory: FileManager.SearchPathDirectory?
     var capturedUrlDomainMask: FileManager.SearchPathDomainMask?
+    var capturedFileNameUrl: URL?
     var capturedPath: String?
+    var capturedFileExistsAtPath: String?
     var urlsWasCalled = false
     var contentsWasCalled = false
     var createFileSuccess = true
@@ -34,10 +36,12 @@ class MockFileManager: FileManagerProtocol {
     }
     
     func createFile(atPath path: String, contents data: Data?, attributes attr: [FileAttributeKey : Any]?) -> Bool {
+        capturedPath = path
         return createFileSuccess
     }
     
     func fileExists(atPath: String) -> Bool {
+        capturedFileExistsAtPath = atPath
         return fileExistsAtPath
     }
     

@@ -1,39 +1,22 @@
 import Foundation
 import UIKit
 import OSLog
-//
-//protocol FileManagerProtocol {
-//    func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL]
-//    func contents(atPath: String) -> Data?
-//}
 
-actor ImageLoader {
+actor ImageCache {
     public enum LoaderStatus {
         case inProgress(Task<UIImage, Error>)
         case fetched(UIImage)
     }
     
-//    enum ImageLoaderError: Error {
-//        case noImageFound
-//        case cannotCreateImage
-//        case imageNotDownloaded
-//        case cannotGetImage
-//        case cannotSaveImage
-//        case unableToGenerateLocalPath
-//    }
-    
-//    private let fileManager: FileManagerProtocol
     public var images: [URLRequest: LoaderStatus] = [:]
     private let logger = Logger(subsystem: "com.wwt.actorsawaitasync.imageloader", category: "ImageLoader")
     private let launcher: TaskLaunchable
+    private var diskCache: DiskCacheProtocol
     
-    
-    public init(launcher: TaskLaunchable = TaskLauncher(), fileManager: FileManagerProtocol = FileManager.default) {
+    public init(launcher: TaskLaunchable = TaskLauncher(), diskCache: DiskCacheProtocol = DiskCache()) {
         self.launcher = launcher
-//        self.fileManager = fileManager
-        
+        self.diskCache = diskCache
     }
-    
     
     public func fetch(_ urlRequest: URLRequest) async throws -> UIImage {
         do {
@@ -42,11 +25,12 @@ actor ImageLoader {
             logger.error("Error: \(error.localizedDescription)")
         }
         
-        let task: Task<UIImage, Error> = launcher.imageTask(priority: nil) {
-            self.logger.debug("Starting Download with URLRequest: \(urlRequest)")
+        // Recognize that we had an error for tests at this point
+        let task: Task<UIImage, Error> = launcher.imageTask(priority: nil) { [weak self] in
+            self?.logger.debug("Starting Download with URLRequest: \(urlRequest)")
             let (imageData, _) = try await URLSession.shared.data(for: urlRequest)
             let image = UIImage(data: imageData)!
-//            try await self.persistImage(image, for: urlRequest)
+            try await self?.diskCache.cacheImage(urlRequest: urlRequest, image: image)
             return image
         }
         
@@ -68,7 +52,9 @@ actor ImageLoader {
                 return try await task.value
             }
         }
-        return UIImage()
-//        return try loadImageFromFileSystem(for: urlRequest)
+        
+        let image = try diskCache.retrieveCachedImage(urlRequest: urlRequest)
+        images[urlRequest] = .fetched(image)
+        return image
     }
 }
