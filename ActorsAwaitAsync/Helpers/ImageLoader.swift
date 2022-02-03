@@ -13,20 +13,20 @@ actor ImageLoader {
         case fetched(UIImage)
     }
     
-    enum ImageLoaderError: Error {
-        case noImageFound
-        case cannotCreateImage
-        case imageNotDownloaded
-        case cannotGetImage
-        case cannotSaveImage
-        case unableToGenerateLocalPath
-    }
+//    enum ImageLoaderError: Error {
+//        case noImageFound
+//        case cannotCreateImage
+//        case imageNotDownloaded
+//        case cannotGetImage
+//        case cannotSaveImage
+//        case unableToGenerateLocalPath
+//    }
     
 //    private let fileManager: FileManagerProtocol
     public var images: [URLRequest: LoaderStatus] = [:]
     private let logger = Logger(subsystem: "com.wwt.actorsawaitasync.imageloader", category: "ImageLoader")
     private let launcher: TaskLaunchable
-    private var documentsDirectory: URL?
+    
     
     public init(launcher: TaskLaunchable = TaskLauncher(), fileManager: FileManagerProtocol = FileManager.default) {
         self.launcher = launcher
