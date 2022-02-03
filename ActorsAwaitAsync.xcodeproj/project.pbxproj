@@ -24,6 +24,7 @@
 		5D5A567927A34067008A3BDA /* picture1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D5A567727A34067008A3BDA /* picture1.jpg */; };
 		5D5A567A27A34067008A3BDA /* picture2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D5A567827A34067008A3BDA /* picture2.jpg */; };
 		5D98043427A9C5710023819F /* TaskLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D98043327A9C5710023819F /* TaskLauncher.swift */; };
+		5DCE4C1D27AC3EC300F36CEE /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1C27AC3EC300F36CEE /* DiskCache.swift */; };
 		5DFDBD8327AB10FA00343122 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFDBD8227AB10FA00343122 /* MockFileManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		5D5A567727A34067008A3BDA /* picture1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picture1.jpg; sourceTree = "<group>"; };
 		5D5A567827A34067008A3BDA /* picture2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picture2.jpg; sourceTree = "<group>"; };
 		5D98043327A9C5710023819F /* TaskLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLauncher.swift; sourceTree = "<group>"; };
+		5DCE4C1C27AC3EC300F36CEE /* DiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
 		5DFDBD8227AB10FA00343122 /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 			children = (
 				5D5A5665279F44AA008A3BDA /* ImageLoader.swift */,
 				5D98043327A9C5710023819F /* TaskLauncher.swift */,
+				5DCE4C1C27AC3EC300F36CEE /* DiskCache.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				5D98043427A9C5710023819F /* TaskLauncher.swift in Sources */,
 				5D5A566E27A3034C008A3BDA /* UIViewController+ActivityView.swift in Sources */,
 				5D5A5632279F03D2008A3BDA /* SceneDelegate.swift in Sources */,
+				5DCE4C1D27AC3EC300F36CEE /* DiskCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

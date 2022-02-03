@@ -68,49 +68,87 @@ class ImageLoaderTests: XCTestCase {
     }
     
     // MARK: loadImageFromFileSystem()
-    func test_loadImageFromFileSystem_givenBadPathToSave_shouldReturnNilData() async throws {
-        let badPath = "BadPath"
-        
-        XCTAssertNil(mockFileManager.contents(atPath: badPath))
-    }
-    
-    func test_loadImageFromFileSystem_givenGoodPathToSave_shouldReturnData() async throws {
-        let goodPath = "GoodPath"
-        
-        XCTAssertNotNil(mockFileManager.contents(atPath: goodPath))
-    }
-    
-    func test_loadImageFromFileSystem_givenBadData_shouldReturnNilData() async throws {
-        let url = URL(string: "file:///Volumes/fake.txt")
-        mockFileManager.createUrlToObject = false
-            
+    func test_fetch_givenIllegalUrl_attemptToGetData_shouldReturnNilData() async throws {
+        let url = URL(string: "NotAURL://")
+
         do {
-            let image = try await testObject.fetch(URLRequest(url: imageOne!))
-            // This is flawed because no matter what we return an image eventually, I'm trying to test when we get this error:
-            //(ActorsAwaitAsync.ImageLoader.ImageLoaderError error 5.)
-            XCTAssertNotNil(image)
+            _ = try await testObject.fetch(URLRequest(url: url!))
+            XCTFail("Should throw error.")
         } catch {
-            XCTFail("Should not throw error.")
-            // Should this equal our error that we throw? Why is it not going up the stack?
-//            XCTAssertEqual(error.localizedDescription, ImageLoader.ImageLoaderError.unableToGenerateLocalPath.localizedDescription)
+            XCTAssertEqual(error.localizedDescription, "unsupported URL")
         }
     }
     
-    // Same flaw as above test
-    func test_loadImageFromFileSystem_givenGoodData_shouldReturnData() async throws {
-        let url = URL(string: "file:///Volumes/fake.txt")
-        mockFileManager.createUrlToObject = false
-        
-        do {
-//            let image = try await testObject.fetch(URLRequest(url: url!))
-            let image = try await testObject.fetch(URLRequest(url: imageOne!))
-            XCTAssertNotNil(image)
-        } catch {
-            // Should this equal our error that we throw? Why is it not going up the stack?
-//            XCTAssertEqual(error.localizedDescription, ImageLoader.ImageLoaderError.unableToGenerateLocalPath.localizedDescription)
-            XCTFail("Should not throw error.")
-        }
-    }
+    
+//
+//    func test_loadImageFromFileSystem_givenGoodPathToSave_shouldReturnData() async throws {
+//        let goodPath = "GoodPath"
+//
+//        XCTAssertNotNil(mockFileManager.contents(atPath: goodPath))
+//    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    func test_loadImageFromFileSystem_givenBadData_shouldReturnNilData() async throws {
+//        let url = URL(string: "file:///Volumes/fake.txt")
+//
+//        do {
+//            let image = try await testObject.fetch(URLRequest(url: imageOne!))
+//            // This is flawed because no matter what we return an image eventually, I'm trying to test when we get this error:
+//            //(ActorsAwaitAsync.ImageLoader.ImageLoaderError error 5.)
+//            XCTAssertNotNil(image)
+//        } catch {
+//            XCTFail("Should not throw error.")
+//            // Should this equal our error that we throw? Why is it not going up the stack?
+////            XCTAssertEqual(error.localizedDescription, ImageLoader.ImageLoaderError.unableToGenerateLocalPath.localizedDescription)
+//        }
+//    }
+//
+//    // Same flaw as above test
+//    func test_loadImageFromFileSystem_givenGoodData_shouldReturnData() async throws {
+//        let url = URL(string: "file:///Volumes/fake.txt")
+//
+//        do {
+////            let image = try await testObject.fetch(URLRequest(url: url!))
+//            let image = try await testObject.fetch(URLRequest(url: imageOne!))
+//            XCTAssertNotNil(image)
+//        } catch {
+//            // Should this equal our error that we throw? Why is it not going up the stack?
+////            XCTAssertEqual(error.localizedDescription, ImageLoader.ImageLoaderError.unableToGenerateLocalPath.localizedDescription)
+//            XCTFail("Should not throw error.")
+//        }
+//    }
  
     
     
