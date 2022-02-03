@@ -3,11 +3,15 @@ import Foundation
 @testable import ActorsAwaitAsync
 
 class MockFileManager: FileManagerProtocol {
-    var urlToObject = URL(string: "URL://")!
+    var createUrlToObject = true
     var localPathToObject = "GoodPath"
     
     func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL] {
-        return [urlToObject]
+        if createUrlToObject {
+            return [URL(string: "Url://to/object")!]
+        } else {
+            return []
+        }
     }
     
     func contents(atPath: String) -> Data? {

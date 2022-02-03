@@ -19,6 +19,7 @@ actor ImageLoader {
         case imageNotDownloaded
         case cannotGetImage
         case cannotSaveImage
+        case unableToGenerateLocalPath
     }
     
     private let fileManager: FileManagerProtocol
@@ -71,7 +72,7 @@ actor ImageLoader {
     private func persistImage(_ image: UIImage, for urlRequest: URLRequest) throws {
         guard let url = fileName(for: urlRequest),
               let data = image.jpegData(compressionQuality: 0.8) else {
-                  assertionFailure("Unable to generate a local path for \(urlRequest)")
+//                  assertionFailure("Unable to generate a local path for \(urlRequest)")
                   return
               }
         do {
@@ -83,8 +84,7 @@ actor ImageLoader {
     
     private func loadImageFromFileSystem(for urlRequest: URLRequest) throws -> UIImage {
         guard let url = fileName(for: urlRequest) else {
-            assertionFailure("Unable to generate a local path for \(urlRequest)")
-            throw ImageLoaderError.noImageFound
+            throw ImageLoaderError.unableToGenerateLocalPath
         }
         
         guard let data = fileManager.contents(atPath: url.path) else {
