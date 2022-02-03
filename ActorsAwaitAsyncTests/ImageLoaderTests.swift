@@ -26,7 +26,7 @@ class MockTaskLauncher: TaskLaunchable {
 class ImageLoaderTests: XCTestCase {
     let mockTaskLauncher = MockTaskLauncher()
     let mockDiskCache = MockDiskCache()
-    var testObject = ImageCache()
+    var testObject = ImageCacheService()
     let imageOne = Bundle.init(for: ImageLoaderTests.self).url(forResource: "picture1", withExtension: "jpg")
     let imageTwo = Bundle.init(for: ImageLoaderTests.self).url(forResource: "picture2", withExtension: "jpg")
     let badURLOne = URL(string: "BadURL1//")
@@ -35,7 +35,7 @@ class ImageLoaderTests: XCTestCase {
     override func setUp() async throws {
         try await super.setUp()
         
-        testObject = ImageCache(launcher: mockTaskLauncher, diskCache: mockDiskCache)
+        testObject = ImageCacheService(launcher: mockTaskLauncher, diskCache: mockDiskCache)
         
     }
     

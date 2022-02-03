@@ -5,7 +5,7 @@ class CustomCell: UICollectionViewCell {
     var emailLabel = UILabel()
     let avatarImageView = UIImageView()
     var avatarImage = UIImage()
-    var imageLoader = ImageCache()
+    var imageLoader = ImageCacheService()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

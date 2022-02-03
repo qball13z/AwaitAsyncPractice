@@ -16,7 +16,7 @@ protocol DiskCacheProtocol {
     func retrieveCachedImage(urlRequest: URLRequest) throws -> UIImage
 }
 
-class DiskCache: DiskCacheProtocol {
+class DiskCacheService: DiskCacheProtocol {
     enum DiskCacheError: Error {
         case invalidFileURL
         case cannotLoadImage

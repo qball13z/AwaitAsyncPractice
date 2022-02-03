@@ -17,15 +17,15 @@
 		5D5A5660279F0911008A3BDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A565F279F0911008A3BDA /* User.swift */; };
 		5D5A5662279F1319008A3BDA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5661279F1319008A3BDA /* APIManager.swift */; };
 		5D5A5664279F3481008A3BDA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5663279F3481008A3BDA /* CustomCell.swift */; };
-		5D5A5666279F44AA008A3BDA /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5665279F44AA008A3BDA /* ImageCache.swift */; };
+		5D5A5666279F44AA008A3BDA /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5665279F44AA008A3BDA /* ImageCacheService.swift */; };
 		5D5A566E27A3034C008A3BDA /* UIViewController+ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A566D27A3034C008A3BDA /* UIViewController+ActivityView.swift */; };
 		5D5A567027A325A1008A3BDA /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A566F27A325A1008A3BDA /* APIManagerTests.swift */; };
 		5D5A567227A3380F008A3BDA /* ImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A567127A3380F008A3BDA /* ImageLoaderTests.swift */; };
 		5D5A567927A34067008A3BDA /* picture1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D5A567727A34067008A3BDA /* picture1.jpg */; };
 		5D5A567A27A34067008A3BDA /* picture2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D5A567827A34067008A3BDA /* picture2.jpg */; };
 		5D6D1D4927AC7EDB0018487B /* MockDiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D1D4827AC7EDB0018487B /* MockDiskCache.swift */; };
-		5D98043427A9C5710023819F /* TaskLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D98043327A9C5710023819F /* TaskLauncher.swift */; };
-		5DCE4C1D27AC3EC300F36CEE /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1C27AC3EC300F36CEE /* DiskCache.swift */; };
+		5D98043427A9C5710023819F /* TaskLauncherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D98043327A9C5710023819F /* TaskLauncherService.swift */; };
+		5DCE4C1D27AC3EC300F36CEE /* DiskCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */; };
 		5DCE4C1F27AC5A2700F36CEE /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1E27AC5A2700F36CEE /* DiskCacheTests.swift */; };
 		5DFDBD8327AB10FA00343122 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFDBD8227AB10FA00343122 /* MockFileManager.swift */; };
 /* End PBXBuildFile section */
@@ -62,15 +62,15 @@
 		5D5A565F279F0911008A3BDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5D5A5661279F1319008A3BDA /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		5D5A5663279F3481008A3BDA /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
-		5D5A5665279F44AA008A3BDA /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		5D5A5665279F44AA008A3BDA /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
 		5D5A566D27A3034C008A3BDA /* UIViewController+ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityView.swift"; sourceTree = "<group>"; };
 		5D5A566F27A325A1008A3BDA /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
 		5D5A567127A3380F008A3BDA /* ImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderTests.swift; sourceTree = "<group>"; };
 		5D5A567727A34067008A3BDA /* picture1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picture1.jpg; sourceTree = "<group>"; };
 		5D5A567827A34067008A3BDA /* picture2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picture2.jpg; sourceTree = "<group>"; };
 		5D6D1D4827AC7EDB0018487B /* MockDiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDiskCache.swift; sourceTree = "<group>"; };
-		5D98043327A9C5710023819F /* TaskLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLauncher.swift; sourceTree = "<group>"; };
-		5DCE4C1C27AC3EC300F36CEE /* DiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
+		5D98043327A9C5710023819F /* TaskLauncherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLauncherService.swift; sourceTree = "<group>"; };
+		5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheService.swift; sourceTree = "<group>"; };
 		5DCE4C1E27AC5A2700F36CEE /* DiskCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheTests.swift; sourceTree = "<group>"; };
 		5DFDBD8227AB10FA00343122 /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -123,17 +123,17 @@
 		5D5A562E279F03D2008A3BDA /* ActorsAwaitAsync */ = {
 			isa = PBXGroup;
 			children = (
+				5D5A563D279F03D3008A3BDA /* Info.plist */,
 				5D5A562F279F03D2008A3BDA /* AppDelegate.swift */,
 				5D5A5631279F03D2008A3BDA /* SceneDelegate.swift */,
-				5D5A5633279F03D2008A3BDA /* ViewController.swift */,
 				5D5A5638279F03D3008A3BDA /* Assets.xcassets */,
-				5D5A563A279F03D3008A3BDA /* LaunchScreen.storyboard */,
-				5D5A563D279F03D3008A3BDA /* Info.plist */,
-				5D5A566C27A300D8008A3BDA /* Extensions */,
-				5D5A566A27A3008F008A3BDA /* Helpers */,
-				5D5A566927A30077008A3BDA /* Views */,
-				5D5A566827A30065008A3BDA /* Modals */,
 				5D5A566727A30057008A3BDA /* API */,
+				5D6D1D4A27AC85950018487B /* Controllers */,
+				5D5A566C27A300D8008A3BDA /* Extensions */,
+				5D5A563A279F03D3008A3BDA /* LaunchScreen.storyboard */,
+				5D5A566827A30065008A3BDA /* Modals */,
+				5D5A566A27A3008F008A3BDA /* Services */,
+				5D5A566927A30077008A3BDA /* Views */,
 			);
 			path = ActorsAwaitAsync;
 			sourceTree = "<group>";
@@ -183,14 +183,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		5D5A566A27A3008F008A3BDA /* Helpers */ = {
+		5D5A566A27A3008F008A3BDA /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				5D5A5665279F44AA008A3BDA /* ImageCache.swift */,
-				5D98043327A9C5710023819F /* TaskLauncher.swift */,
-				5DCE4C1C27AC3EC300F36CEE /* DiskCache.swift */,
+				5D5A5665279F44AA008A3BDA /* ImageCacheService.swift */,
+				5D98043327A9C5710023819F /* TaskLauncherService.swift */,
+				5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */,
 			);
-			path = Helpers;
+			path = Services;
 			sourceTree = "<group>";
 		};
 		5D5A566C27A300D8008A3BDA /* Extensions */ = {
@@ -208,6 +208,14 @@
 				5D5A567827A34067008A3BDA /* picture2.jpg */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5D6D1D4A27AC85950018487B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D5A5633279F03D2008A3BDA /* ViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		5DFDBD8127AB10E500343122 /* Mocks */ = {
@@ -351,16 +359,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D5A5666279F44AA008A3BDA /* ImageCache.swift in Sources */,
+				5D5A5666279F44AA008A3BDA /* ImageCacheService.swift in Sources */,
 				5D5A5660279F0911008A3BDA /* User.swift in Sources */,
 				5D5A5634279F03D2008A3BDA /* ViewController.swift in Sources */,
 				5D5A5630279F03D2008A3BDA /* AppDelegate.swift in Sources */,
 				5D5A5662279F1319008A3BDA /* APIManager.swift in Sources */,
 				5D5A5664279F3481008A3BDA /* CustomCell.swift in Sources */,
-				5D98043427A9C5710023819F /* TaskLauncher.swift in Sources */,
+				5D98043427A9C5710023819F /* TaskLauncherService.swift in Sources */,
 				5D5A566E27A3034C008A3BDA /* UIViewController+ActivityView.swift in Sources */,
 				5D5A5632279F03D2008A3BDA /* SceneDelegate.swift in Sources */,
-				5DCE4C1D27AC3EC300F36CEE /* DiskCache.swift in Sources */,
+				5DCE4C1D27AC3EC300F36CEE /* DiskCacheService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

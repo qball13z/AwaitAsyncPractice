@@ -3,7 +3,7 @@ import XCTest
 
 class DiskCacheTests: XCTestCase {
     var mockFileManager = MockFileManager()
-    var testObject: DiskCache!
+    var testObject: DiskCacheService!
     let urlRequest = URLRequest(url: URL(string: "http://www.test.com/image.jpg")!)
     let testImage = UIImage()
     var testRealImage: UIImage!
@@ -11,7 +11,7 @@ class DiskCacheTests: XCTestCase {
     override func setUp() async throws {
         try await super.setUp()
         
-        testObject = DiskCache(fileManager: mockFileManager)
+        testObject = DiskCacheService(fileManager: mockFileManager)
         
         let imageUrl = Bundle.init(for: ImageLoaderTests.self).url(forResource: "picture1", withExtension: "jpg")
         testRealImage = UIImage(contentsOfFile: imageUrl!.path)
@@ -22,14 +22,14 @@ class DiskCacheTests: XCTestCase {
         mockFileManager.documentsDirectoryUrl = nil
         
         XCTAssertThrowsError(try testObject.cacheImage(urlRequest: urlRequest, image: testImage)) { error in
-            XCTAssertEqual(error.localizedDescription, DiskCache.DiskCacheError.invalidFileURL.localizedDescription)
+            XCTAssertEqual(error.localizedDescription, DiskCacheService.DiskCacheError.invalidFileURL.localizedDescription)
         }
     }
     
     func test_cacheImage_givenImageWithBadData_throwError() {
         XCTAssertThrowsError(try testObject.cacheImage(urlRequest: urlRequest, image: UIImage())) { error in
-            if let diskError = error as? DiskCache.DiskCacheError {
-            XCTAssertEqual(diskError, DiskCache.DiskCacheError.couldNotCreateData)
+            if let diskError = error as? DiskCacheService.DiskCacheError {
+            XCTAssertEqual(diskError, DiskCacheService.DiskCacheError.couldNotCreateData)
             } else {
                 XCTFail("Should throw DiskCache Error.")
             }
@@ -60,8 +60,8 @@ class DiskCacheTests: XCTestCase {
         mockFileManager.createFileSuccess = false
 
         XCTAssertThrowsError(try testObject.cacheImage(urlRequest: urlRequest, image: testRealImage)) { error in
-            if let diskError = error as? DiskCache.DiskCacheError {
-            XCTAssertEqual(diskError, DiskCache.DiskCacheError.couldNotCacheImage)
+            if let diskError = error as? DiskCacheService.DiskCacheError {
+            XCTAssertEqual(diskError, DiskCacheService.DiskCacheError.couldNotCacheImage)
             } else {
                 XCTFail("Should throw DiskCache Error.")
             }
@@ -74,8 +74,8 @@ class DiskCacheTests: XCTestCase {
         let urlRequest = URLRequest(url: URL(string: "http://www.test.com")!)
         
         XCTAssertThrowsError(try testObject.retrieveCachedImage(urlRequest: urlRequest)) { error in
-            if let diskError = error as? DiskCache.DiskCacheError {
-            XCTAssertEqual(diskError, DiskCache.DiskCacheError.invalidFileURL)
+            if let diskError = error as? DiskCacheService.DiskCacheError {
+            XCTAssertEqual(diskError, DiskCacheService.DiskCacheError.invalidFileURL)
             } else {
                 XCTFail("Should throw DiskCache Error.")
             }
@@ -86,8 +86,8 @@ class DiskCacheTests: XCTestCase {
         mockFileManager.contentsToReturn = nil
         
         XCTAssertThrowsError(try testObject.retrieveCachedImage(urlRequest: urlRequest)) { error in
-            if let diskError = error as? DiskCache.DiskCacheError {
-            XCTAssertEqual(diskError, DiskCache.DiskCacheError.cannotLoadImage)
+            if let diskError = error as? DiskCacheService.DiskCacheError {
+            XCTAssertEqual(diskError, DiskCacheService.DiskCacheError.cannotLoadImage)
             } else {
                 XCTFail("Should throw DiskCache Error.")
             }
@@ -98,8 +98,8 @@ class DiskCacheTests: XCTestCase {
         mockFileManager.contentsToReturn = "Testing".data(using: .utf8)
         
         XCTAssertThrowsError(try testObject.retrieveCachedImage(urlRequest: urlRequest)) { error in
-            if let diskError = error as? DiskCache.DiskCacheError {
-            XCTAssertEqual(diskError, DiskCache.DiskCacheError.invalidImageData)
+            if let diskError = error as? DiskCacheService.DiskCacheError {
+            XCTAssertEqual(diskError, DiskCacheService.DiskCacheError.invalidImageData)
             } else {
                 XCTFail("Should throw DiskCache Error.")
             }

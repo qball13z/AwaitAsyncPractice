@@ -2,7 +2,9 @@ import Foundation
 import UIKit
 import OSLog
 
-actor ImageCache {
+// Inspired by: https://www.donnywals.com/using-swifts-async-await-to-build-an-image-loader/
+
+actor ImageCacheService {
     public enum LoaderStatus {
         case inProgress(Task<UIImage, Error>)
         case fetched(UIImage)
@@ -13,7 +15,7 @@ actor ImageCache {
     private let launcher: TaskLaunchable
     private var diskCache: DiskCacheProtocol
     
-    public init(launcher: TaskLaunchable = TaskLauncher(), diskCache: DiskCacheProtocol = DiskCache()) {
+    public init(launcher: TaskLaunchable = TaskLauncherService(), diskCache: DiskCacheProtocol = DiskCacheService()) {
         self.launcher = launcher
         self.diskCache = diskCache
     }
