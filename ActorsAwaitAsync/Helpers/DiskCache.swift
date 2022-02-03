@@ -4,6 +4,9 @@ import OSLog
 protocol FileManagerProtocol {
     func urls(for directory: FileManager.SearchPathDirectory, in domainMask: FileManager.SearchPathDomainMask) -> [URL]
     func contents(atPath: String) -> Data?
+    func createFile(atPath path: String, contents data: Data?, attributes attr: [FileAttributeKey : Any]?) -> Bool
+    func fileExists(atPath: String) -> Bool
+    func removeItem(at URL: URL) throws
 }
 
 extension FileManager: FileManagerProtocol {}
@@ -19,14 +22,15 @@ class DiskCache: DiskCacheProtocol {
         case cannotLoadImage
         case invalidImageData
         case couldNotCreateData
+        case couldNotCacheImage
     }
     
     private let fileManager: FileManagerProtocol
     private var documentsDirectory: URL?
     private let logger = Logger(subsystem: "com.wwt.actorsawaitasync.diskCache", category: "DiskCache")
     
-    public init(fileMangager: FileManagerProtocol = FileManager.default) {
-        self.fileManager = fileMangager
+    public init(fileManager: FileManagerProtocol = FileManager.default) {
+        self.fileManager = fileManager
     }
     
     func cacheImage(urlRequest: URLRequest, image: UIImage) throws {
@@ -61,5 +65,15 @@ class DiskCache: DiskCacheProtocol {
               }
         
         return applicationSupport.appendingPathComponent(fileName.replacingOccurrences(of: "/", with: "-"))
+    }
+    
+    private func storeFileAt(url: URL!, data: Data) throws {
+        if fileManager.fileExists(atPath: url.path) {
+            try fileManager.removeItem(at: url)
+        }
+        
+        if !fileManager.createFile(atPath: url.path, contents: data, attributes: nil) {
+            throw DiskCacheError.couldNotCacheImage
+        }
     }
 }

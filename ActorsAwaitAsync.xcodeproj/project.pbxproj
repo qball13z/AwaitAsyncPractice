@@ -25,6 +25,7 @@
 		5D5A567A27A34067008A3BDA /* picture2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D5A567827A34067008A3BDA /* picture2.jpg */; };
 		5D98043427A9C5710023819F /* TaskLauncher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D98043327A9C5710023819F /* TaskLauncher.swift */; };
 		5DCE4C1D27AC3EC300F36CEE /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1C27AC3EC300F36CEE /* DiskCache.swift */; };
+		5DCE4C1F27AC5A2700F36CEE /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1E27AC5A2700F36CEE /* DiskCacheTests.swift */; };
 		5DFDBD8327AB10FA00343122 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFDBD8227AB10FA00343122 /* MockFileManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		5D5A567827A34067008A3BDA /* picture2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picture2.jpg; sourceTree = "<group>"; };
 		5D98043327A9C5710023819F /* TaskLauncher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLauncher.swift; sourceTree = "<group>"; };
 		5DCE4C1C27AC3EC300F36CEE /* DiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
+		5DCE4C1E27AC5A2700F36CEE /* DiskCacheTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheTests.swift; sourceTree = "<group>"; };
 		5DFDBD8227AB10FA00343122 /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 				5DFDBD8127AB10E500343122 /* Mocks */,
 				5D5A567627A34004008A3BDA /* Resources */,
 				5D5A566F27A325A1008A3BDA /* APIManagerTests.swift */,
+				5DCE4C1E27AC5A2700F36CEE /* DiskCacheTests.swift */,
 				5D5A567127A3380F008A3BDA /* ImageLoaderTests.swift */,
 			);
 			path = ActorsAwaitAsyncTests;
@@ -363,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5D5A567027A325A1008A3BDA /* APIManagerTests.swift in Sources */,
+				5DCE4C1F27AC5A2700F36CEE /* DiskCacheTests.swift in Sources */,
 				5DFDBD8327AB10FA00343122 /* MockFileManager.swift in Sources */,
 				5D5A567227A3380F008A3BDA /* ImageLoaderTests.swift in Sources */,
 			);
