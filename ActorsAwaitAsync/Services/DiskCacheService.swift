@@ -11,12 +11,12 @@ protocol FileManagerProtocol {
 
 extension FileManager: FileManagerProtocol {}
 
-protocol DiskCacheProtocol {
+protocol DiskCacheServiceProtocol {
     func cacheImage(urlRequest: URLRequest, image: UIImage) throws
     func retrieveCachedImage(urlRequest: URLRequest) throws -> UIImage
 }
 
-class DiskCacheService: DiskCacheProtocol {
+class DiskCacheService: DiskCacheServiceProtocol {
     enum DiskCacheError: Error {
         case invalidFileURL
         case cannotLoadImage

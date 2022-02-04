@@ -1,7 +1,7 @@
 import XCTest
 @testable import ActorsAwaitAsync
 
-class MockDiskCache: DiskCacheProtocol {
+class MockDiskCacheService: DiskCacheServiceProtocol {
     var retrieveCachedImageWasCalled = false
     var retrieveCachedImageCapturedUrlRequest: URLRequest?
     var retrieveCachedImageReturnImageValue = UIImage()
@@ -11,20 +11,25 @@ class MockDiskCache: DiskCacheProtocol {
     var cacheImageWasCalled = false
     var cacheImageCapturedUrlRequest: URLRequest?
     var cacheImageCapturedImage: UIImage?
+    var cacheImageShouldNotThrow = true
     
     
     func cacheImage(urlRequest: URLRequest, image: UIImage) throws {
         cacheImageWasCalled = true
         cacheImageCapturedImage = image
         cacheImageCapturedUrlRequest = urlRequest
+        
+        if !cacheImageShouldNotThrow {
+            throw DiskCacheService.DiskCacheError.couldNotCreateData
+        }
     }
     
     func retrieveCachedImage(urlRequest: URLRequest) throws -> UIImage {
         retrieveCachedImageWasCalled = true
         retrieveCachedImageCapturedUrlRequest = urlRequest
         
-        if let diskCacheError = retrieveCachedImageErrorShouldThrow {
-            throw diskCacheError
+        if !retrieveCachedImageShouldReturnImage {
+            throw DiskCacheService.DiskCacheError.invalidImageData
         }
         
         return retrieveCachedImageReturnImageValue

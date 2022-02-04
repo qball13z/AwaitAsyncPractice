@@ -4,7 +4,12 @@ import OSLog
 
 // Inspired by: https://www.donnywals.com/using-swifts-async-await-to-build-an-image-loader/
 
-actor ImageCacheService {
+protocol ImageCacheServiceProtocol {
+    func fetch(_ urlRequest: URLRequest) async throws -> UIImage
+    func getImageFromURLRequest(_ urlRequest: URLRequest) async throws -> UIImage
+}
+
+actor ImageCacheService: ImageCacheServiceProtocol {
     public enum LoaderStatus {
         case inProgress(Task<UIImage, Error>)
         case fetched(UIImage)
@@ -13,9 +18,9 @@ actor ImageCacheService {
     public var images: [URLRequest: LoaderStatus] = [:]
     private let logger = Logger(subsystem: "com.wwt.actorsawaitasync.imageloader", category: "ImageLoader")
     private let launcher: TaskLaunchable
-    private var diskCache: DiskCacheProtocol
+    private var diskCache: DiskCacheServiceProtocol
     
-    public init(launcher: TaskLaunchable = TaskLauncherService(), diskCache: DiskCacheProtocol = DiskCacheService()) {
+    public init(launcher: TaskLaunchable = TaskLauncherService(), diskCache: DiskCacheServiceProtocol = DiskCacheService()) {
         self.launcher = launcher
         self.diskCache = diskCache
     }
@@ -43,7 +48,7 @@ actor ImageCacheService {
         return image
     }
     
-    private func getImageFromURLRequest(_ urlRequest: URLRequest) async throws -> UIImage {
+    internal func getImageFromURLRequest(_ urlRequest: URLRequest) async throws -> UIImage {
         if let status = images[urlRequest] {
             switch status {
             case .fetched(let image):

@@ -1,7 +1,7 @@
 import XCTest
 @testable import ActorsAwaitAsync
 
-class DiskCacheTests: XCTestCase {
+class DiskCacheServiceTests: XCTestCase {
     var mockFileManager = MockFileManager()
     var testObject: DiskCacheService!
     let urlRequest = URLRequest(url: URL(string: "http://www.test.com/image.jpg")!)
@@ -13,7 +13,7 @@ class DiskCacheTests: XCTestCase {
         
         testObject = DiskCacheService(fileManager: mockFileManager)
         
-        let imageUrl = Bundle.init(for: ImageLoaderTests.self).url(forResource: "picture1", withExtension: "jpg")
+        let imageUrl = Bundle.init(for: ImageCacheServiceTests.self).url(forResource: "picture1", withExtension: "jpg")
         testRealImage = UIImage(contentsOfFile: imageUrl!.path)
     }
     
