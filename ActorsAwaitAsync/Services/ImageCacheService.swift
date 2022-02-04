@@ -4,17 +4,17 @@ import OSLog
 
 // Inspired by: https://www.donnywals.com/using-swifts-async-await-to-build-an-image-loader/
 
-protocol ImageCacheServiceProtocol {
+protocol ImageCacheServiceProtocol {// :Actor restricts to @Actor
     func fetch(_ urlRequest: URLRequest) async throws -> UIImage
     func getImageFromURLRequest(_ urlRequest: URLRequest) async throws -> UIImage
 }
 
+public enum LoaderStatus {
+    case inProgress(Task<UIImage, Error>)
+    case fetched(UIImage)
+}
+
 actor ImageCacheService: ImageCacheServiceProtocol {
-    public enum LoaderStatus {
-        case inProgress(Task<UIImage, Error>)
-        case fetched(UIImage)
-    }
-    
     public var images: [URLRequest: LoaderStatus] = [:]
     private let logger = Logger(subsystem: "com.wwt.actorsawaitasync.imageloader", category: "ImageLoader")
     private let launcher: TaskLaunchable

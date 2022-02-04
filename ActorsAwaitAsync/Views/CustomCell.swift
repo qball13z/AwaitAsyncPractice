@@ -12,6 +12,13 @@ class CustomCell: UICollectionViewCell {
         configureSubviews()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        nameLabel.text = ""
+        emailLabel.text = ""
+        avatarImage = UIImage()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

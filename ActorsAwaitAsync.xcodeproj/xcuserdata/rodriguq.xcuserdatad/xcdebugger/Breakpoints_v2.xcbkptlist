@@ -20,5 +20,131 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4A055336-BEB4-4AC1-AC6B-C485F3F2A5B6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActorsAwaitAsyncTests/Mocks/MockImageCacheService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "fetch(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4A055336-BEB4-4AC1-AC6B-C485F3F2A5B6 - 29e0ff3ead43e1a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActorsAwaitAsyncTests.MockImageCacheService.fetch(Foundation.URLRequest) async throws -&gt; __C.UIImage"
+                  moduleName = "ActorsAwaitAsyncTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsyncTests/Mocks/MockImageCacheService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "353">
+               </Location>
+               <Location
+                  uuid = "4A055336-BEB4-4AC1-AC6B-C485F3F2A5B6 - 29e0ff3ead43e098"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActorsAwaitAsyncTests.MockImageCacheService.fetch(Foundation.URLRequest) async throws -&gt; __C.UIImage"
+                  moduleName = "ActorsAwaitAsyncTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsyncTests/Mocks/MockImageCacheService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "353">
+               </Location>
+               <Location
+                  uuid = "4A055336-BEB4-4AC1-AC6B-C485F3F2A5B6 - ef84e642a5728334"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for ActorsAwaitAsyncTests.MockImageCacheService.fetch(Foundation.URLRequest) async throws -&gt; __C.UIImage"
+                  moduleName = "ActorsAwaitAsyncTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsyncTests/Mocks/MockImageCacheService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "39"
+                  endingLineNumber = "39"
+                  offsetFromSymbolStart = "346">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "606C6C11-4F10-4854-8144-C49EC51E65F0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ActorsAwaitAsyncTests/Mocks/MockImageCacheService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "getImageFromURLRequest(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "606C6C11-4F10-4854-8144-C49EC51E65F0 - 439ee5c4b74ff82a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActorsAwaitAsyncTests.MockImageCacheService.getImageFromURLRequest(Foundation.URLRequest) async throws -&gt; __C.UIImage"
+                  moduleName = "ActorsAwaitAsyncTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsyncTests/Mocks/MockImageCacheService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "353">
+               </Location>
+               <Location
+                  uuid = "606C6C11-4F10-4854-8144-C49EC51E65F0 - 439ee5c4b74ff973"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ActorsAwaitAsyncTests.MockImageCacheService.getImageFromURLRequest(Foundation.URLRequest) async throws -&gt; __C.UIImage"
+                  moduleName = "ActorsAwaitAsyncTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsyncTests/Mocks/MockImageCacheService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "44"
+                  endingLineNumber = "44"
+                  offsetFromSymbolStart = "353">
+               </Location>
+               <Location
+                  uuid = "606C6C11-4F10-4854-8144-C49EC51E65F0 - 7209e29b49746541"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for ActorsAwaitAsyncTests.MockImageCacheService.getImageFromURLRequest(Foundation.URLRequest) async throws -&gt; __C.UIImage"
+                  moduleName = "ActorsAwaitAsyncTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rodriguq/Desktop/ActorsAwaitAsync/ActorsAwaitAsyncTests/Mocks/MockImageCacheService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "346">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -6,7 +6,7 @@ protocol FileManagerProtocol {
     func contents(atPath: String) -> Data?
     func createFile(atPath path: String, contents data: Data?, attributes attr: [FileAttributeKey : Any]?) -> Bool
     func fileExists(atPath: String) -> Bool
-    func removeItem(at URL: URL) throws
+    func removeItem(at URL: URL) throws 
 }
 
 extension FileManager: FileManagerProtocol {}
