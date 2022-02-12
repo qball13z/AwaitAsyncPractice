@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		5D5A5630279F03D2008A3BDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A562F279F03D2008A3BDA /* AppDelegate.swift */; };
 		5D5A5632279F03D2008A3BDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5631279F03D2008A3BDA /* SceneDelegate.swift */; };
-		5D5A5634279F03D2008A3BDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5633279F03D2008A3BDA /* ViewController.swift */; };
+		5D5A5634279F03D2008A3BDA /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5633279F03D2008A3BDA /* PeopleViewController.swift */; };
 		5D5A5639279F03D3008A3BDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D5A5638279F03D3008A3BDA /* Assets.xcassets */; };
 		5D5A563C279F03D3008A3BDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5D5A563A279F03D3008A3BDA /* LaunchScreen.storyboard */; };
 		5D5A5651279F03D4008A3BDA /* ActorsAwaitAsyncUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5650279F03D4008A3BDA /* ActorsAwaitAsyncUITests.swift */; };
 		5D5A5653279F03D4008A3BDA /* ActorsAwaitAsyncUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5652279F03D4008A3BDA /* ActorsAwaitAsyncUITestsLaunchTests.swift */; };
-		5D5A5660279F0911008A3BDA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A565F279F0911008A3BDA /* User.swift */; };
+		5D5A5660279F0911008A3BDA /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A565F279F0911008A3BDA /* Person.swift */; };
 		5D5A5662279F1319008A3BDA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5661279F1319008A3BDA /* APIManager.swift */; };
-		5D5A5664279F3481008A3BDA /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5663279F3481008A3BDA /* CustomCell.swift */; };
+		5D5A5664279F3481008A3BDA /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5663279F3481008A3BDA /* PersonCell.swift */; };
 		5D5A5666279F44AA008A3BDA /* ImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A5665279F44AA008A3BDA /* ImageCacheService.swift */; };
 		5D5A566E27A3034C008A3BDA /* UIViewController+ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A566D27A3034C008A3BDA /* UIViewController+ActivityView.swift */; };
 		5D5A567027A325A1008A3BDA /* APIManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D5A566F27A325A1008A3BDA /* APIManagerTests.swift */; };
@@ -24,6 +24,9 @@
 		5D5A567927A34067008A3BDA /* picture1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D5A567727A34067008A3BDA /* picture1.jpg */; };
 		5D5A567A27A34067008A3BDA /* picture2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D5A567827A34067008A3BDA /* picture2.jpg */; };
 		5D6D1D4927AC7EDB0018487B /* MockDiskCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D1D4827AC7EDB0018487B /* MockDiskCacheService.swift */; };
+		5D7EF76427B6F34E0023DCDF /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EF76327B6F34E0023DCDF /* PeopleViewModel.swift */; };
+		5D7EF76627B6F3670023DCDF /* PersonCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EF76527B6F3670023DCDF /* PersonCellViewModel.swift */; };
+		5D7EF76827B6F50F0023DCDF /* PeopleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EF76727B6F50F0023DCDF /* PeopleService.swift */; };
 		5D8061EF27ADB4070028573C /* MockImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8061EE27ADB4070028573C /* MockImageCacheService.swift */; };
 		5D98043427A9C5710023819F /* TaskLauncherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D98043327A9C5710023819F /* TaskLauncherService.swift */; };
 		5DCE4C1D27AC3EC300F36CEE /* DiskCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */; };
@@ -52,7 +55,7 @@
 		5D5A562C279F03D2008A3BDA /* ActorsAwaitAsync.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActorsAwaitAsync.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D5A562F279F03D2008A3BDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5D5A5631279F03D2008A3BDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5D5A5633279F03D2008A3BDA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5D5A5633279F03D2008A3BDA /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		5D5A5638279F03D3008A3BDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D5A563B279F03D3008A3BDA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5D5A563D279F03D3008A3BDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -60,9 +63,9 @@
 		5D5A564C279F03D4008A3BDA /* ActorsAwaitAsyncUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ActorsAwaitAsyncUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D5A5650279F03D4008A3BDA /* ActorsAwaitAsyncUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorsAwaitAsyncUITests.swift; sourceTree = "<group>"; };
 		5D5A5652279F03D4008A3BDA /* ActorsAwaitAsyncUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorsAwaitAsyncUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		5D5A565F279F0911008A3BDA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5D5A565F279F0911008A3BDA /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		5D5A5661279F1319008A3BDA /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
-		5D5A5663279F3481008A3BDA /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		5D5A5663279F3481008A3BDA /* PersonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		5D5A5665279F44AA008A3BDA /* ImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacheService.swift; sourceTree = "<group>"; };
 		5D5A566D27A3034C008A3BDA /* UIViewController+ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ActivityView.swift"; sourceTree = "<group>"; };
 		5D5A566F27A325A1008A3BDA /* APIManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerTests.swift; sourceTree = "<group>"; };
@@ -70,6 +73,9 @@
 		5D5A567727A34067008A3BDA /* picture1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picture1.jpg; sourceTree = "<group>"; };
 		5D5A567827A34067008A3BDA /* picture2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = picture2.jpg; sourceTree = "<group>"; };
 		5D6D1D4827AC7EDB0018487B /* MockDiskCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDiskCacheService.swift; sourceTree = "<group>"; };
+		5D7EF76327B6F34E0023DCDF /* PeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModel.swift; sourceTree = "<group>"; };
+		5D7EF76527B6F3670023DCDF /* PersonCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellViewModel.swift; sourceTree = "<group>"; };
+		5D7EF76727B6F50F0023DCDF /* PeopleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleService.swift; sourceTree = "<group>"; };
 		5D8061EE27ADB4070028573C /* MockImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageCacheService.swift; sourceTree = "<group>"; };
 		5D98043327A9C5710023819F /* TaskLauncherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLauncherService.swift; sourceTree = "<group>"; };
 		5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheService.swift; sourceTree = "<group>"; };
@@ -130,12 +136,11 @@
 				5D5A5631279F03D2008A3BDA /* SceneDelegate.swift */,
 				5D5A5638279F03D3008A3BDA /* Assets.xcassets */,
 				5D5A566727A30057008A3BDA /* API */,
-				5D6D1D4A27AC85950018487B /* Controllers */,
 				5D5A566C27A300D8008A3BDA /* Extensions */,
+				5D7EF75D27B6F07B0023DCDF /* Helpers */,
 				5D5A563A279F03D3008A3BDA /* LaunchScreen.storyboard */,
-				5D5A566827A30065008A3BDA /* Modals */,
+				5D7EF75E27B6F1230023DCDF /* Screens */,
 				5D5A566A27A3008F008A3BDA /* Services */,
-				5D5A566927A30077008A3BDA /* Views */,
 			);
 			path = ActorsAwaitAsync;
 			sourceTree = "<group>";
@@ -169,28 +174,13 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		5D5A566827A30065008A3BDA /* Modals */ = {
-			isa = PBXGroup;
-			children = (
-				5D5A565F279F0911008A3BDA /* User.swift */,
-			);
-			path = Modals;
-			sourceTree = "<group>";
-		};
-		5D5A566927A30077008A3BDA /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				5D5A5663279F3481008A3BDA /* CustomCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		5D5A566A27A3008F008A3BDA /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				5D5A5665279F44AA008A3BDA /* ImageCacheService.swift */,
 				5D98043327A9C5710023819F /* TaskLauncherService.swift */,
 				5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */,
+				5D7EF76727B6F50F0023DCDF /* PeopleService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -212,12 +202,55 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		5D6D1D4A27AC85950018487B /* Controllers */ = {
+		5D7EF75D27B6F07B0023DCDF /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				5D5A5633279F03D2008A3BDA /* ViewController.swift */,
 			);
-			path = Controllers;
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5D7EF75E27B6F1230023DCDF /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				5D7EF75F27B6F14A0023DCDF /* People */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		5D7EF75F27B6F14A0023DCDF /* People */ = {
+			isa = PBXGroup;
+			children = (
+				5D7EF76227B6F16D0023DCDF /* ViewModel */,
+				5D7EF76127B6F15F0023DCDF /* View */,
+				5D7EF76027B6F1580023DCDF /* Model */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		5D7EF76027B6F1580023DCDF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5D5A565F279F0911008A3BDA /* Person.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5D7EF76127B6F15F0023DCDF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5D5A5633279F03D2008A3BDA /* PeopleViewController.swift */,
+				5D5A5663279F3481008A3BDA /* PersonCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5D7EF76227B6F16D0023DCDF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5D7EF76327B6F34E0023DCDF /* PeopleViewModel.swift */,
+				5D7EF76527B6F3670023DCDF /* PersonCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5DFDBD8127AB10E500343122 /* Mocks */ = {
@@ -362,12 +395,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D7EF76427B6F34E0023DCDF /* PeopleViewModel.swift in Sources */,
 				5D5A5666279F44AA008A3BDA /* ImageCacheService.swift in Sources */,
-				5D5A5660279F0911008A3BDA /* User.swift in Sources */,
-				5D5A5634279F03D2008A3BDA /* ViewController.swift in Sources */,
+				5D5A5660279F0911008A3BDA /* Person.swift in Sources */,
+				5D5A5634279F03D2008A3BDA /* PeopleViewController.swift in Sources */,
+				5D7EF76827B6F50F0023DCDF /* PeopleService.swift in Sources */,
 				5D5A5630279F03D2008A3BDA /* AppDelegate.swift in Sources */,
 				5D5A5662279F1319008A3BDA /* APIManager.swift in Sources */,
-				5D5A5664279F3481008A3BDA /* CustomCell.swift in Sources */,
+				5D5A5664279F3481008A3BDA /* PersonCell.swift in Sources */,
+				5D7EF76627B6F3670023DCDF /* PersonCellViewModel.swift in Sources */,
 				5D98043427A9C5710023819F /* TaskLauncherService.swift in Sources */,
 				5D5A566E27A3034C008A3BDA /* UIViewController+ActivityView.swift in Sources */,
 				5D5A5632279F03D2008A3BDA /* SceneDelegate.swift in Sources */,

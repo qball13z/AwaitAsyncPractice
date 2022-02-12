@@ -1,8 +1,8 @@
 struct UserResult: Codable {
-    let results: [User]
+    let results: [Person]
 }
 
-public struct User: Codable, Equatable {
+public struct Person: Codable, Equatable {
     let gender: String
     let name: NameInfo
     let location: Location

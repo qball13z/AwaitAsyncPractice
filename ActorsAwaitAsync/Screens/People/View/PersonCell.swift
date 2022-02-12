@@ -1,11 +1,21 @@
 import UIKit
 
-class CustomCell: UICollectionViewCell {
+class PersonCell: UICollectionViewCell {
     var nameLabel = UILabel()
     var emailLabel = UILabel()
     let avatarImageView = UIImageView()
     var avatarImage = UIImage()
     var imageLoader = ImageCacheService()
+    
+    var cellViewModel: PersonCellViewModel? {
+        didSet {
+            nameLabel.text = cellViewModel?.fullName
+            emailLabel.text = cellViewModel?.email
+            Task {
+                await loadImage(at: URLRequest(url: URL(string: cellViewModel?.imageURL ?? "")!))
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,15 +31,6 @@ class CustomCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func configure(name: String, email: String, imageURL: String) {
-        nameLabel.text = name
-        emailLabel.text = email
-        
-        Task {
-         await loadImage(at: URLRequest(url: URL(string: imageURL)!))
-        }
     }
     
     private func loadImage(at source: URLRequest) async {

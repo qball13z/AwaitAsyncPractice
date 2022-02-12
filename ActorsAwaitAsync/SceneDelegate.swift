@@ -8,7 +8,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let navigationController = UINavigationController()
         let window = UIWindow(windowScene: windowScene)
-        navigationController.viewControllers = [ViewController(dataFetchable: apiManager)]
+        navigationController.viewControllers = [PeopleViewController()]
         window.rootViewController = navigationController // Your initial view controller.
         window.makeKeyAndVisible()
         

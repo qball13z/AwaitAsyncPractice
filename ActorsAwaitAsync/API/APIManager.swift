@@ -21,7 +21,7 @@ public class APIManager: DataFetchable {
         self.apiURL = apiURL
     }
     
-    public func fetchUsers(resultCount: Int) async throws -> [User] {
+    public func fetchUsers(resultCount: Int) async throws -> [Person] {
         if resultCount < 1 {
             return []
         }
@@ -49,7 +49,7 @@ public class APIManager: DataFetchable {
         return userResult.results
     }
     
-    public func loadUsers(numberOfUsersToFetch: Int) async throws -> [User] {
+    public func loadUsers(numberOfUsersToFetch: Int) async throws -> [Person] {
         let users = try await fetchUsers(resultCount: numberOfUsersToFetch)
         return users
     }
