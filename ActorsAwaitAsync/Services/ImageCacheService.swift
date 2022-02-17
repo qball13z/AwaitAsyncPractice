@@ -4,7 +4,7 @@ import OSLog
 
 // Inspired by: https://www.donnywals.com/using-swifts-async-await-to-build-an-image-loader/
 
-protocol ImageCacheServiceProtocol {// :Actor restricts to @Actor
+protocol ImageCacheServiceProtocol: Actor {// :Actor restricts to @Actor
     func fetch(_ urlRequest: URLRequest) async throws -> UIImage
     func getImageFromURLRequest(_ urlRequest: URLRequest) async throws -> UIImage
 }

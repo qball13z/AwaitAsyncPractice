@@ -75,7 +75,7 @@ extension PeopleViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonCell", for: indexPath) as? PersonCell else { fatalError("PersonCell doesn't exist!")}
         let cellViewModel = viewModel.getCellViewModel(at: indexPath)
-        cell.cellViewModel = cellViewModel
+        cell.updateCell(name: cellViewModel.fullName, email: cellViewModel.email, image: cellViewModel.image)
         return cell
     }
     
@@ -83,4 +83,3 @@ extension PeopleViewController: UICollectionViewDataSource, UICollectionViewDele
         // TODO: 
     }
 }
-

@@ -5,17 +5,8 @@ class PersonCell: UICollectionViewCell {
     var emailLabel = UILabel()
     let avatarImageView = UIImageView()
     var avatarImage = UIImage()
-    var imageLoader = ImageCacheService()
-    
-    var cellViewModel: PersonCellViewModel? {
-        didSet {
-            nameLabel.text = cellViewModel?.fullName
-            emailLabel.text = cellViewModel?.email
-            Task {
-                await loadImage(at: URLRequest(url: URL(string: cellViewModel?.imageURL ?? "")!))
-            }
-        }
-    }
+//    var imageLoader = ImageCacheService()
+    var imageTask: Task<Void, Never>?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,22 +18,35 @@ class PersonCell: UICollectionViewCell {
         nameLabel.text = ""
         emailLabel.text = ""
         avatarImage = UIImage()
+        imageTask?.cancel()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func loadImage(at source: URLRequest) async {
-        do {
-            avatarImage = try await imageLoader.fetch(source)
-            await MainActor.run {
-                avatarImageView.image = avatarImage
-            }
-        } catch {
-            print(error)
-        }
+    func updateCell(name: String, email: String, image: UIImage) {
+        nameLabel.text = name
+        emailLabel.text = email
+        avatarImageView.image = image
+//      imageTask = Task {
+//          await loadImage(at: URLRequest(url: URL(string: imageURL)!))
+//        }
     }
+    
+    // TODO: Move this to the ViewController
+//    private func loadImage(at source: URLRequest) async {
+//        guard !Task.isCancelled else { return }
+//
+//        do {
+//            avatarImage = try await imageLoader.fetch(source)
+//            await MainActor.run {
+//                avatarImageView.image = avatarImage
+//            }
+//        } catch {
+//            print(error)
+//        }
+//    }
     
     private func configureSubviews() {
         nameLabel.numberOfLines = 0

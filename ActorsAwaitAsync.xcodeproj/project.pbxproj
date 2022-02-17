@@ -26,7 +26,6 @@
 		5D6D1D4927AC7EDB0018487B /* MockDiskCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D6D1D4827AC7EDB0018487B /* MockDiskCacheService.swift */; };
 		5D7EF76427B6F34E0023DCDF /* PeopleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EF76327B6F34E0023DCDF /* PeopleViewModel.swift */; };
 		5D7EF76627B6F3670023DCDF /* PersonCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EF76527B6F3670023DCDF /* PersonCellViewModel.swift */; };
-		5D7EF76827B6F50F0023DCDF /* PeopleService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D7EF76727B6F50F0023DCDF /* PeopleService.swift */; };
 		5D8061EF27ADB4070028573C /* MockImageCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D8061EE27ADB4070028573C /* MockImageCacheService.swift */; };
 		5D98043427A9C5710023819F /* TaskLauncherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D98043327A9C5710023819F /* TaskLauncherService.swift */; };
 		5DCE4C1D27AC3EC300F36CEE /* DiskCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */; };
@@ -75,7 +74,6 @@
 		5D6D1D4827AC7EDB0018487B /* MockDiskCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDiskCacheService.swift; sourceTree = "<group>"; };
 		5D7EF76327B6F34E0023DCDF /* PeopleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewModel.swift; sourceTree = "<group>"; };
 		5D7EF76527B6F3670023DCDF /* PersonCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCellViewModel.swift; sourceTree = "<group>"; };
-		5D7EF76727B6F50F0023DCDF /* PeopleService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleService.swift; sourceTree = "<group>"; };
 		5D8061EE27ADB4070028573C /* MockImageCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockImageCacheService.swift; sourceTree = "<group>"; };
 		5D98043327A9C5710023819F /* TaskLauncherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLauncherService.swift; sourceTree = "<group>"; };
 		5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheService.swift; sourceTree = "<group>"; };
@@ -180,7 +178,6 @@
 				5D5A5665279F44AA008A3BDA /* ImageCacheService.swift */,
 				5D98043327A9C5710023819F /* TaskLauncherService.swift */,
 				5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */,
-				5D7EF76727B6F50F0023DCDF /* PeopleService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -399,7 +396,6 @@
 				5D5A5666279F44AA008A3BDA /* ImageCacheService.swift in Sources */,
 				5D5A5660279F0911008A3BDA /* Person.swift in Sources */,
 				5D5A5634279F03D2008A3BDA /* PeopleViewController.swift in Sources */,
-				5D7EF76827B6F50F0023DCDF /* PeopleService.swift in Sources */,
 				5D5A5630279F03D2008A3BDA /* AppDelegate.swift in Sources */,
 				5D5A5662279F1319008A3BDA /* APIManager.swift in Sources */,
 				5D5A5664279F3481008A3BDA /* PersonCell.swift in Sources */,

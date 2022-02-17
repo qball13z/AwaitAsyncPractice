@@ -1,7 +1,7 @@
 import Foundation
+import UIKit
 struct PersonCellViewModel {
     var fullName: String
     var email: String
-    var imageURL: String
-    
+    var image: UIImage
 }
