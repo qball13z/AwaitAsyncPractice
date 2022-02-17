@@ -5,7 +5,6 @@ class PersonCell: UICollectionViewCell {
     var emailLabel = UILabel()
     let avatarImageView = UIImageView()
     var avatarImage = UIImage()
-//    var imageLoader = ImageCacheService()
     var imageTask: Task<Void, Never>?
     
     override init(frame: CGRect) {
@@ -18,35 +17,22 @@ class PersonCell: UICollectionViewCell {
         nameLabel.text = ""
         emailLabel.text = ""
         avatarImage = UIImage()
-        imageTask?.cancel()
+        imageTask?.cancel() // Stop our imageCache service if this cell is being reused.
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func updateCell(name: String, email: String, image: UIImage) {
-        nameLabel.text = name
-        emailLabel.text = email
+    func updateImage(_ image: UIImage) {
         avatarImageView.image = image
-//      imageTask = Task {
-//          await loadImage(at: URLRequest(url: URL(string: imageURL)!))
-//        }
     }
     
-    // TODO: Move this to the ViewController
-//    private func loadImage(at source: URLRequest) async {
-//        guard !Task.isCancelled else { return }
-//
-//        do {
-//            avatarImage = try await imageLoader.fetch(source)
-//            await MainActor.run {
-//                avatarImageView.image = avatarImage
-//            }
-//        } catch {
-//            print(error)
-//        }
-//    }
+    func update(name: String, email: String, task: Task<Void, Never>) {
+        nameLabel.text = name
+        emailLabel.text = email
+        imageTask = task
+    }
     
     private func configureSubviews() {
         nameLabel.numberOfLines = 0

@@ -19,7 +19,7 @@ class PeopleViewModel {
     
     func getPeople() async throws {
         do {
-            people = try await peopleService.loadUsers(numberOfUsersToFetch: 200)
+            people = try await peopleService.loadUsers(numberOfUsersToFetch: 2000)
             await fetchData(people: people)
         } catch {
             // TODO: Throw an error to handle or show alert
@@ -40,9 +40,7 @@ class PeopleViewModel {
         let email = person.email
         let imageURL = person.picture.thumbnail
         
-        let image = await fetchImage(imageURL: imageURL)
-        
-        return PersonCellViewModel(fullName: fullName, email: email, image: image)
+        return PersonCellViewModel(fullName: fullName, email: email, imageURL: imageURL)
     }
     
     func getCellViewModel(at indexPath: IndexPath) -> PersonCellViewModel {
@@ -61,7 +59,7 @@ class PeopleViewModel {
         }
     }
     
-    private func fetchImage(imageURL: String) async -> UIImage {
+    public func fetchImage(imageURL: String) async -> UIImage {
         let imageTask = Task<UIImage, Error> {
             let currentImage: UIImage = await loadImage(at: URLRequest(url: URL(string: imageURL)!))
             return currentImage

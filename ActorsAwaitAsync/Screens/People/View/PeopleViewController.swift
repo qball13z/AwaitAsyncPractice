@@ -74,8 +74,18 @@ extension PeopleViewController: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PersonCell", for: indexPath) as? PersonCell else { fatalError("PersonCell doesn't exist!")}
+        
         let cellViewModel = viewModel.getCellViewModel(at: indexPath)
-        cell.updateCell(name: cellViewModel.fullName, email: cellViewModel.email, image: cellViewModel.image)
+        let imageTask = Task<Void, Never> {
+            guard !Task.isCancelled else { return } // Make sure we don't load an image if it's been cancelled due to cell reuse
+            let image = await viewModel.fetchImage(imageURL: cellViewModel.imageURL)
+            guard !Task.isCancelled else { return } // Make sure we don't load an image if it's been cancelled due to cell reuse
+            await MainActor.run {
+                cell.updateImage(image)
+            }
+        }
+    
+        cell.update(name: cellViewModel.fullName, email: cellViewModel.email, task: imageTask)
         return cell
     }
     
