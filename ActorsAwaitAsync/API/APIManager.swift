@@ -5,7 +5,7 @@ protocol URLSessionProtocol {
 }
 
 public class APIManager: DataFetchable {
-    enum UserFetchError: Error {
+    enum APIManagerError: Error {
         case invalidURL
         case serverRequestError
         case unableToDecodeError
@@ -27,7 +27,7 @@ public class APIManager: DataFetchable {
         }
         
         guard let url = URL(string: "\(self.apiURL)\(String(resultCount))") else {
-            throw UserFetchError.invalidURL
+            throw APIManagerError.invalidURL
         }
         
         let (data, response) = try await session.data(from: url, delegate: nil)
@@ -35,16 +35,16 @@ public class APIManager: DataFetchable {
         if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode >= 400 {
             switch httpResponse.statusCode {
             case 400...499:
-                throw UserFetchError.failedRequestError
+                throw APIManagerError.failedRequestError
             case 500...599:
-                throw UserFetchError.serverRequestError
+                throw APIManagerError.serverRequestError
             default:
-                throw UserFetchError.genericRequestError
+                throw APIManagerError.genericRequestError
             }
         }
         
         guard let userResult = try? JSONDecoder().decode(UserResult.self, from: data) else {
-            throw UserFetchError.unableToDecodeError
+            throw APIManagerError.unableToDecodeError
         }
         return userResult.results
     }

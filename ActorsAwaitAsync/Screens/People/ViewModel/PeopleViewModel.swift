@@ -1,16 +1,16 @@
 import UIKit
 
 public protocol DataFetchable {
+    func fetchUsers(resultCount: Int) async throws -> [Person]
     func loadUsers(numberOfUsersToFetch: Int) async throws -> [Person]
 }
 
 class PeopleViewModel {
     private var peopleService: DataFetchable
     var imageLoader: ImageCacheServiceProtocol
-    var reloadCollectionView: (() -> Void)?
     var people = [Person]()
     var personCellViewModels = [PersonCellViewModel]()
-    
+    var userCount = 2000
     
     init(peopleService: DataFetchable = APIManager(), imageLoader: ImageCacheServiceProtocol = ImageCacheService()) {
         self.peopleService = peopleService
@@ -19,9 +19,10 @@ class PeopleViewModel {
     
     func getPeople() async throws {
         do {
-            people = try await peopleService.loadUsers(numberOfUsersToFetch: 2000)
+            people = try await peopleService.loadUsers(numberOfUsersToFetch: userCount)
             await fetchData(people: people)
         } catch {
+            print(error.localizedDescription)
             // TODO: Throw an error to handle or show alert
         }
     }

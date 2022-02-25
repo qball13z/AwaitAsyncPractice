@@ -30,6 +30,8 @@
 		5D98043427A9C5710023819F /* TaskLauncherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D98043327A9C5710023819F /* TaskLauncherService.swift */; };
 		5DCE4C1D27AC3EC300F36CEE /* DiskCacheService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */; };
 		5DCE4C1F27AC5A2700F36CEE /* DiskCacheServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DCE4C1E27AC5A2700F36CEE /* DiskCacheServiceTests.swift */; };
+		5DEBF92827C96EED00F0B81B /* MockApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEBF92727C96EED00F0B81B /* MockApiManager.swift */; };
+		5DF018CA27BFF510005E173E /* PeopleViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DF018C727BFF505005E173E /* PeopleViewModelTests.swift */; };
 		5DFDBD8327AB10FA00343122 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DFDBD8227AB10FA00343122 /* MockFileManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +80,8 @@
 		5D98043327A9C5710023819F /* TaskLauncherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLauncherService.swift; sourceTree = "<group>"; };
 		5DCE4C1C27AC3EC300F36CEE /* DiskCacheService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheService.swift; sourceTree = "<group>"; };
 		5DCE4C1E27AC5A2700F36CEE /* DiskCacheServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskCacheServiceTests.swift; sourceTree = "<group>"; };
+		5DEBF92727C96EED00F0B81B /* MockApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockApiManager.swift; sourceTree = "<group>"; };
+		5DF018C727BFF505005E173E /* PeopleViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PeopleViewModelTests.swift; path = ActorsAwaitAsyncTests/PeopleViewModelTests.swift; sourceTree = SOURCE_ROOT; };
 		5DFDBD8227AB10FA00343122 /* MockFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +155,7 @@
 				5D5A566F27A325A1008A3BDA /* APIManagerTests.swift */,
 				5DCE4C1E27AC5A2700F36CEE /* DiskCacheServiceTests.swift */,
 				5D5A567127A3380F008A3BDA /* ImageCacheServiceTests.swift */,
+				5DF018C727BFF505005E173E /* PeopleViewModelTests.swift */,
 			);
 			path = ActorsAwaitAsyncTests;
 			sourceTree = "<group>";
@@ -256,6 +261,7 @@
 				5DFDBD8227AB10FA00343122 /* MockFileManager.swift */,
 				5D6D1D4827AC7EDB0018487B /* MockDiskCacheService.swift */,
 				5D8061EE27ADB4070028573C /* MockImageCacheService.swift */,
+				5DEBF92727C96EED00F0B81B /* MockApiManager.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -416,6 +422,8 @@
 				5D6D1D4927AC7EDB0018487B /* MockDiskCacheService.swift in Sources */,
 				5DCE4C1F27AC5A2700F36CEE /* DiskCacheServiceTests.swift in Sources */,
 				5DFDBD8327AB10FA00343122 /* MockFileManager.swift in Sources */,
+				5DF018CA27BFF510005E173E /* PeopleViewModelTests.swift in Sources */,
+				5DEBF92827C96EED00F0B81B /* MockApiManager.swift in Sources */,
 				5D5A567227A3380F008A3BDA /* ImageCacheServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

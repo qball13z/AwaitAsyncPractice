@@ -4,6 +4,7 @@ import UIKit
 // How hard is it to use a mock of an actor that is an @actor?
 
 // What are the ramifications of using a class vs actor in a mock?
+// If the protocol is an actor you must conform to that type with your mock as well.
 
 //
 actor MockImageCacheService: ImageCacheServiceProtocol {

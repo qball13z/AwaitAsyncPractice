@@ -30,7 +30,7 @@ class APIManagerTests: XCTestCase {
             _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
             XCTFail("This should throw.")
         } catch {
-            XCTAssertEqual(APIManager.UserFetchError.invalidURL, error as! APIManager.UserFetchError)
+            XCTAssertEqual(APIManager.APIManagerError.invalidURL, error as! APIManager.APIManagerError)
         }
     }
     
@@ -43,7 +43,7 @@ class APIManagerTests: XCTestCase {
             _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
             XCTFail("This should throw.")
         } catch {
-            XCTAssertEqual(APIManager.UserFetchError.unableToDecodeError, error as! APIManager.UserFetchError)
+            XCTAssertEqual(APIManager.APIManagerError.unableToDecodeError, error as! APIManager.APIManagerError)
         }
     }
     
@@ -69,7 +69,7 @@ class APIManagerTests: XCTestCase {
             _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
             XCTFail("This should throw.")
         } catch {
-            XCTAssertEqual(APIManager.UserFetchError.failedRequestError, error as! APIManager.UserFetchError)
+            XCTAssertEqual(APIManager.APIManagerError.failedRequestError, error as! APIManager.APIManagerError)
         }
     }
     
@@ -82,7 +82,7 @@ class APIManagerTests: XCTestCase {
             _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
             XCTFail("This should throw.")
         } catch {
-            XCTAssertEqual(APIManager.UserFetchError.serverRequestError, error as! APIManager.UserFetchError)
+            XCTAssertEqual(APIManager.APIManagerError.serverRequestError, error as! APIManager.APIManagerError)
         }
     }
     
@@ -95,7 +95,7 @@ class APIManagerTests: XCTestCase {
             _ = try await apiManager.loadUsers(numberOfUsersToFetch: userCount)
             XCTFail("This should throw.")
         } catch {
-            XCTAssertEqual(APIManager.UserFetchError.genericRequestError, error as! APIManager.UserFetchError)
+            XCTAssertEqual(APIManager.APIManagerError.genericRequestError, error as! APIManager.APIManagerError)
         }
     }
     
