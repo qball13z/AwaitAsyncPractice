@@ -97,10 +97,24 @@ class ImageCacheServiceTests: XCTestCase {
     }
     
     // MARK: getImageFromURLRequest()
-    func test_getImageFromURLRequest_givenLoaderStatusFetched_returnImage() async {
+    func test_getImageFromURLRequest_givenNoURLRequestsInMemory_returnImage() async {
         do {
             let image = try await testObject.fetch(URLRequest(url: imageOne!))
             XCTAssertNotNil(image)
+            
+        } catch {
+            XCTFail("Should not throw.")
+        }
+    }
+    
+    func test_getImageFromURLRequest_givenFetchedLoaderStatus_returnImage() async throws {
+        // Populate imageURlRequest dictionary with one value.
+        _ = try await testObject.fetch(urlRequest)
+        
+        do {
+            let image = try await testObject.fetch(urlRequest)
+            XCTAssertNotNil(image)
+            XCTAssertEqual(image.size, CGSize.zero)
             
         } catch {
             XCTFail("Should not throw.")

@@ -20,6 +20,24 @@ actor MockImageCacheService: ImageCacheServiceProtocol {
     private let launcher: TaskLaunchable
     private var diskCache: DiskCacheServiceProtocol
     
+    public func setShouldFetchReturnImage(_ shouldSet: Bool) async {
+        fetchShouldReturnImage = shouldSet
+    }
+    
+    public func configureMock(fetchCapturedURLRequest: URLRequest? = nil,
+                              fetchReturnImageValue: UIImage = UIImage(),
+                              fetchShouldReturnImage: Bool = true,
+                              getImageFromURLRequestCapturedURLRequest: URLRequest? = nil,
+                              getImageFromURLRequestReturnImageValue: UIImage = UIImage(),
+                              getImageFromURLRequestShouldReturnImage: Bool = true) {
+        self.fetchCapturedURLRequest = fetchCapturedURLRequest
+        self.fetchReturnImageValue = fetchReturnImageValue
+        self.fetchShouldReturnImage = fetchShouldReturnImage
+        self.getImageFromURLRequestCapturedURLRequest = getImageFromURLRequestCapturedURLRequest
+        self.getImageFromURLRequestReturnImageValue = getImageFromURLRequestReturnImageValue
+        self.getImageFromURLRequestShouldReturnImage = getImageFromURLRequestShouldReturnImage
+    }
+    
     enum MockImageCacheServiceError: Error {
         case fetchError
         case getImageFromURLRequestError

@@ -18,13 +18,8 @@ class PeopleViewModel {
     }
     
     func getPeople() async throws {
-        do {
-            people = try await peopleService.loadUsers(numberOfUsersToFetch: userCount)
-            await fetchData(people: people)
-        } catch {
-            print(error.localizedDescription)
-            // TODO: Throw an error to handle or show alert
-        }
+        people = try await peopleService.loadUsers(numberOfUsersToFetch: userCount)
+        await fetchData(people: people)
     }
     
     func fetchData(people: [Person]) async {
@@ -61,20 +56,12 @@ class PeopleViewModel {
     }
     
     public func fetchImage(imageURL: String) async -> UIImage {
-        let imageTask = Task<UIImage, Error> {
+        let imageTask = Task<UIImage, Never> {
             let currentImage: UIImage = await loadImage(at: URLRequest(url: URL(string: imageURL)!))
             return currentImage
         }
         
         let result = await imageTask.result
-        
-        do {
-            let image = try result.get()
-            return image
-        } catch {
-            print(error)
-        }
-        
-        return UIImage()
+        return (try? result.get()) ?? UIImage()
     }
 }
