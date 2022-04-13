@@ -52,10 +52,10 @@ actor ImageCacheService: ImageCacheServiceProtocol {
         if let status = images[urlRequest] {
             switch status {
             case .fetched(let image):
-                logger.debug("Fetched image \(image) with URLRequest \(urlRequest)")
+                logger.debug("### Fetched image \(image) with URLRequest \(urlRequest)")
                 return image
             case .inProgress(let task):
-                logger.debug("In Progress task with URLRequest \(urlRequest)")
+                logger.debug("### In Progress task with URLRequest \(urlRequest)")
                 return try await task.value
             }
         }
